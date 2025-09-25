@@ -1,0 +1,26 @@
+body {
+    &:before {
+        content: 'mob';
+        display: block;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        margin: 10px;
+        padding: 5px;
+        font-size: 12px;
+        line-height: 1;
+        color: white;
+        background: black;
+        z-index: 99999999999;
+        opacity: .375;
+        font-family: sans-serif;
+        pointer-events: none;
+
+        @media #{$mq-xs-min} { content: 'xs'; }
+        @media #{$mq-sm-min} { content: 'sm'; }
+        @media #{$mq-md-min} { content: 'md'; }
+        @media #{$mq-lg-min} { content: 'lg'; }
+        @media #{$mq-xl-min} { content: 'xl'; }
+        @media #{$mq-2xl-min} { content: '2xl'; }
+    }
+}

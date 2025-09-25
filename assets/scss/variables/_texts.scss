@@ -1,0 +1,108 @@
+.text-smallest {
+	font-size: .8rem;
+	line-height: 1.3;
+
+	@media #{$mq-sm-min} {
+		font-size: .7rem;
+	}
+
+	@media #{$mq-lg-min} {
+		font-size: .6rem;
+	}
+
+	@media #{$mq-2xl-min} {
+		font-size: .5rem;
+	}
+}
+
+.text-smaller {
+	font-size: .8rem;
+	line-height: 1.3;
+
+	@media #{$mq-2xl-min} {
+		font-size: .675rem;
+	}
+}
+
+.text-small {
+	font-size: 1rem;
+	line-height: 1.5;
+
+	//@media #{$mq-2xl-min} {
+	//	font-size: 1.125rem;
+	//}
+}
+
+.text-regular {
+	font-size: 1rem;
+}
+
+.text-medium {
+	font-size: 1.175rem;
+	line-height: 1.5;
+}
+
+.text-medium-small {
+	font-size: clamp(1.25rem, 2.25vw, 1.5rem);
+	line-height: 1.2;
+}
+
+.text-medium-big {
+	font-size: clamp(1.5rem, 2.75vw, 2rem);
+	line-height: 1.2;
+}
+
+.text-big {
+	font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+	line-height: 1.2;
+
+	@media #{$mq-md-min} {
+		line-height: 1.1;
+	}
+}
+
+.text-bigger {
+	font-size: clamp(2rem, 4.25vw, 3.5rem);
+	line-height: 1.2;
+
+	@media #{$mq-md-min} {
+		line-height: 1.1;
+	}
+}
+
+.text-biggest {
+	font-size: clamp(4rem, 6.75vw, 6rem);
+	line-height: 1;
+}
+
+.h1 {
+	font-family: $font-title;
+	font-weight: $bold;
+	font-size: clamp(4rem, 6.75vw, 6rem);
+	line-height: 1;
+}
+
+.h2 {
+	font-family: $font-title;
+	font-weight: $bold;
+	font-size: clamp(2.5rem, 4.25vw, 3.75rem);
+	line-height: 1;
+}
+
+.h3 {
+	font-family: $font-title;
+	font-weight: $bold;
+	font-size: clamp(1.375rem, 2vw, 1.675rem);
+	line-height: 1.1;
+}
+
+.h4 {
+	font-family: $font-title;
+	font-weight: $bold;
+	font-size: clamp(1rem, 1.5vw, 1.25rem);
+	line-height: 1.1;
+}
+
+.text-white{
+	color: $white;
+}

@@ -1,0 +1,60 @@
+@keyframes rotation {
+	from {
+		transform: rotate(0deg);
+	}
+
+	to {
+		transform: rotate(359deg);
+	}
+}
+
+@keyframes sliding {
+	from {
+		transform: none;
+	}
+
+	to {
+		transform: translateY(15rem);
+	}
+}
+
+@keyframes blur {
+	0% {
+		backdrop-filter: blur(0);
+	}
+
+	30% {
+		backdrop-filter: blur(0);
+	}
+
+	100% {
+		backdrop-filter: blur(.5rem);
+	}
+}
+
+.split-line {
+	* {
+		will-change: transform;
+	}
+}
+
+.reveal-text {
+	position: relative;
+}
+
+.fill-title > * {
+	background: linear-gradient(
+		to right,
+		$black 50%,
+		$gray-lightest 50%
+	);
+	background-size: 200% 100%;
+	background-position-x: 100%;
+	color: transparent;
+	background-clip: text;
+	-webkit-background-clip: text;
+}
+
+.animated-line {
+	transform-origin: 0 0;
+}

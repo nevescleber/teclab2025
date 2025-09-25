@@ -1,0 +1,321 @@
+// Hero Banner Styles
+.hero-banner {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    
+    // Main overlay on top of everything
+    &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.7);
+        z-index: 0;
+        pointer-events: none;
+    }
+    
+    // Video Background
+    .video-background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -2;
+        
+        video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 100%);
+            z-index: -1;
+        }
+    }
+    
+    // Main Content
+    .banner-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 5rem;
+        align-items: center;
+        width: 100%;
+        padding: 5rem 0;
+        position: relative;
+        z-index: 150;
+        
+        // Fire background positioned behind badges area
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            background-image: url('../img/fire.png');
+            background-repeat: no-repeat;
+            background-position: center right;
+            background-size: contain;
+            z-index: 1;
+            opacity: 0.8;
+        }
+    }
+    
+    // Left Column
+    .content-left {
+        z-index: 200;
+        
+        .title-section {
+            margin-bottom: 2.5rem;
+            
+            .title-badge {
+                position: relative;
+                display: inline-block;
+                background: white;
+                padding: 0.9375rem 1.875rem 0.9375rem 1.25rem;
+                clip-path: polygon(0 0, calc(100% - 1.25rem) 0, 100% 100%, 0 100%);
+                font-family: $font-title;
+                
+                h1 {
+                    font-size: 1.5rem;
+                    font-weight: 700;
+                    color: #333;
+                    margin: 0;
+                    letter-spacing: 0.0625rem;
+                }
+            }
+        }
+
+        .cut-header {
+            // Ajustes rápidos
+            --bg: #fff;          // cor do quadrante
+            --fg: #000;          // cor do texto
+            --cut: 1.375rem;     // tamanho do corte (triângulo)
+            --pad-x: 2.25rem;    // padding horizontal
+            --pad-y: 1.125rem;   // padding vertical
+          
+            position: relative;
+            background: var(--bg);
+            padding: var(--pad-y) calc(var(--pad-x) + var(--cut)) var(--pad-y) var(--pad-x);
+            display: flex;
+            align-items: flex-start; // texto “em cima”
+            min-height: 4.5rem;      // altura parecida com a referência
+            overflow: visible;       // permite o corte “sair” da caixa
+          
+            h2 {
+              margin: 0;
+              color: var(--fg);
+              text-transform: uppercase;
+              letter-spacing: 0.06em;
+              font-weight: 700;
+              // tamanho responsivo próximo ao visual do exemplo
+              font-size: clamp(1rem, 3.2vw, 2.2rem);
+              line-height: 1.1;
+              // Se quiser usar Oxanium ou Sora, basta trocar a font-family aqui
+              // font-family: "Oxanium", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+            }
+          
+            // Triângulo/corte no canto inferior direito, “para fora” da faixa
+            &::after {
+              content: "";
+              position: absolute;
+              right: calc(-1 * var(--cut)); // joga o corte para fora
+              bottom: 0;
+              width: 0;
+              height: 0;
+              border-left: var(--cut) solid transparent;
+              border-top: var(--cut) solid #000; // cor do corte
+            }
+          }
+          
+        
+        .brand-title {
+            margin-bottom: 1.875rem;
+            
+            h2 {
+                font-size: 4.5rem;
+                font-weight: 700;
+                color: white;
+                margin: 0;
+                text-shadow: 0.125rem 0.125rem 0.25rem rgba(0, 0, 0, 0.5);
+                line-height: 1;
+            }
+        }
+        
+        .description {
+            max-width: 31.25rem;
+            
+            p {
+                color: rgba(255, 255, 255, 0.9);
+                margin: 0;
+                text-shadow: 0.0625rem 0.0625rem 0.125rem rgba(0, 0, 0, 0.5);
+            }
+        }
+    }
+    
+    // Right Column - Overlapping Images
+    .content-right {
+        position: relative;
+        height: 25rem;
+        z-index: 200;
+        
+        .images-stack {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            
+            .image-item {
+                position: absolute;
+                transition: transform 0.3s ease;
+                
+                img {
+                    width: auto;
+                    height: 375px;
+                    filter: drop-shadow(0 0.625rem 1.25rem rgba(0, 0, 0, 0.3));
+                }
+                
+                &:hover {
+                    transform: scale(1.05) translateY(-0.625rem);
+                    z-index: 10;
+                }
+                
+                // Image positioning side by side with height variations
+                &.image-1 {
+                    top: 0;
+                    left: 0;
+                    z-index: 3;
+                }
+                
+                &.image-2 {
+                    top: 2rem;
+                    left: 10rem;
+                    z-index: 2;
+                }
+                
+                &.image-3 {
+                    top: 4rem;
+                    left: 20rem;
+                    z-index: 1;
+                }
+            }
+        }
+    }
+}
+
+// Responsive Design
+@media (max-width: 64rem) {
+    .hero-banner {
+        .banner-content {
+            grid-template-columns: 1fr;
+            gap: 3.125rem;
+            text-align: center;
+        }
+        
+        .content-left {
+            .brand-title h2 {
+                font-size: 3.5rem;
+            }
+        }
+        
+        .content-right {
+            height: 25rem;
+            
+            .images-stack {
+                .image-item {
+                    img {
+                        height: 12.5rem;
+                    }
+                    
+                    &.image-1 {
+                        top: 0;
+                        left: calc(50% - 8rem);
+                        transform: translateX(-50%);
+                    }
+                    
+                    &.image-2 {
+                        top: 2rem;
+                        left: 50%;
+                        transform: translateX(-50%);
+                    }
+                    
+                    &.image-3 {
+                        top: 4rem;
+                        left: calc(50% + 8rem);
+                        transform: translateX(-50%);
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 48rem) {
+    .hero-banner {
+        height: auto;
+        min-height: 100vh;
+        
+        .banner-content {
+            padding: 7.5rem 0 3.75rem;
+        }
+        
+        .content-left {
+            .title-section .title-badge {
+                padding: 0.75rem 1.5625rem 0.75rem 0.9375rem;
+                
+                h1 {
+                    font-size: 1.125rem;
+                }
+            }
+            
+            .brand-title h2 {
+                font-size: 2.625rem;
+            }
+            
+            .description p {
+                font-size: 1rem;
+            }
+        }
+        
+        .content-right {
+            height: 18.75rem;
+            
+            .images-stack {
+                .image-item {
+                    img {
+                        height: 9.375rem;
+                    }
+                    
+                    &.image-1 {
+                        top: 0;
+                        left: calc(50% - 5rem);
+                        transform: translateX(-50%);
+                    }
+                    
+                    &.image-2 {
+                        top: 1.5rem;
+                        left: 50%;
+                        transform: translateX(-50%);
+                    }
+                    
+                    &.image-3 {
+                        top: 3rem;
+                        left: calc(50% + 5rem);
+                        transform: translateX(-50%);
+                    }
+                }
+            }
+        }
+    }
+}

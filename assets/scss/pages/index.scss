@@ -1,0 +1,839 @@
+body{
+    font-family: $font-body;
+}
+
+#teclab{
+    background-color: #1e1e1e;
+    padding: 4rem 0;
+    color: white;
+    position: relative;
+    
+    .teclab-wrapper{
+        .row {
+            align-items: center;
+            position: relative;
+        }
+
+        .image{
+            width: 100%;
+            height: 100%;
+            min-height: 25rem;
+            object-fit: cover;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .col-md-6 {
+            &:first-child {
+                img {
+                    width: 100%;
+                    height: auto;
+                    border-radius: 8px;
+                }
+            }
+        }
+        
+        .teclab-content {
+            position: relative;
+            
+            .teclab-title-box {
+                position: relative;
+                background-color: #141414;
+                padding: 2.5rem 2rem 0 2rem;
+                margin-bottom: 2rem;
+                z-index: 2;
+                
+                // Background estendido que vai até a imagem
+                &::before {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: -9.375rem; // Estende para a esquerda (direção da imagem) - 150px
+                    right: 0;
+                    bottom: 0;
+                    background-color: #141414;
+                    z-index: -1;
+                    
+                    // Responsive - ajusta a extensão conforme a tela
+                    @media (min-width: 992px) {
+                        left: -8.5rem; // Maior extensão em telas grandes - 200px
+                    }
+                    
+                    /*@media (min-width: 1200px) {
+                        left: -15.625rem; // Ainda maior em telas muito grandes - 250px
+                    }*/
+                }
+                
+                // Cut effect na borda direita embaixo
+                &::after {
+                    content: '';
+                    position: absolute;
+                    bottom: 0;
+                    right: 0;
+                    width: 0;
+                    height: 0;
+                    border-left: 1.5625rem solid transparent; // 25px
+                    border-bottom: 1.5625rem solid #1e1e1e; // 25px
+                    border-radius: 0 0 0 0.25rem; // 4px
+                    z-index: 1;
+                }
+            }
+            
+            .teclab-title {
+                line-height: 1.2;
+                margin: 0;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+                font-family: $font-title;
+                font-weight: $thin;
+
+                span{
+                    text-transform: none;
+                }
+                
+                br {
+                    display: block;
+                }
+                
+                // Efeito de destaque no texto
+                background: linear-gradient(135deg, #ffffff 0%, #cccccc 100%);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+                
+                // Posicionamento para ficar um pouco acima da imagem
+                position: relative;
+                transform: translateY(-20px);
+            }
+            
+            .teclab-description {
+                padding-left: 1rem;
+                
+                p {
+                    font-size: 1.1rem;
+                    line-height: 1.6;
+                    color: #cccccc;
+                    margin: 0;
+                }
+            }
+        }
+    }
+    
+    // Responsividade
+    @media (max-width: 768px) {
+        padding: 2rem 0;
+        
+        .teclab-content {
+            padding-left: 0;
+            margin-top: 2rem;
+            
+            .teclab-title {
+                font-size: 1.8rem;
+                transform: translateY(0);
+            }
+            
+            .teclab-title-box {
+                padding: 2rem 1.5rem 1.5rem 1.5rem;
+                
+                // Remove o background estendido em mobile
+                &::before {
+                    left: 0;
+                }
+                
+                &::after {
+                    border-left-width: 1.25rem; // 20px
+                    border-bottom-width: 1.25rem; // 20px
+                }
+            }
+        }
+    }
+}
+
+#sobre-selos{
+    background-color: #0f0f0f;
+    padding: 4rem 0;
+
+    .sobre-selos-wrapper{
+        text-align: center;
+        color: $white;
+        
+        h1 {
+            margin-bottom: 1rem;
+        }
+        
+        p {
+            margin-bottom: 3rem;
+            font-size: 1.2rem;
+            opacity: 0.8;
+        }
+    }
+    
+    .selos-boxes {
+        margin-top: 6rem;
+    }
+    
+    .selo-box {
+        background: rgba(255, 255, 255, 0.03);
+        border: 0.0625rem solid rgba(255, 255, 255, 0.1);
+        border-radius: 1.25rem;
+        padding: 0;
+        position: relative;
+        overflow: visible;
+        cursor: pointer;
+        transition: all 0.4s ease;
+        backdrop-filter: blur(0.625rem);
+        height: 25rem;
+        
+        &:hover {
+            transform: translateY(-0.625rem);
+            box-shadow: 0 1.25rem 2.5rem rgba(0, 0, 0, 0.3);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .selo-image-container {
+            position: relative;
+            height: 16.25rem;
+            background-image: url('../../assets/img/bg-frame.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            border-radius: 1.25rem 1.25rem 0 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: visible;
+            transition: all 0.4s ease;
+            
+            &.bg-frame {
+                &::before {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    background: rgba(0, 0, 0, 0.1);
+                    z-index: 1;
+                    border-radius: 1.25rem 1.25rem 0 0;
+                }
+            }
+        }
+        
+        .selo-image {
+            width: 15rem;
+            height: auto;
+            position: relative;
+            z-index: 2;
+            filter: drop-shadow(0 0.625rem 1.25rem rgba(0, 0, 0, 0.3));
+            transition: all 0.4s ease;
+            transform: translateY(-3.125rem);
+        }
+        
+        .selo-content {
+            padding: 1.5rem;
+            position: relative;
+            z-index: 3;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 0 0 1.25rem 1.25rem;
+            height: 8.75rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+        
+        .selo-subtitle {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin: 0 0 0.5rem 0;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-weight: 400;
+        }
+        
+        .selo-title {
+            font-size: 1.8rem;
+            color: $white;
+            margin: 0;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-family: $font-title;
+        }
+        
+        .selo-btn {
+            position: absolute;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            width: 2.5rem;
+            height: 2.5rem;
+            border: 0.125rem solid rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.1);
+            color: $white;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(0.625rem);
+            
+            &:hover {
+                background: rgba(255, 255, 255, 0.2);
+                border-color: rgba(255, 255, 255, 0.5);
+                transform: scale(1.1);
+            }
+        }
+        
+        // Description area that appears from bottom
+        .selo-description {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.95);
+            color: $white;
+            padding: 1.5rem;
+            text-align: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+            border-radius: 0 0 1.25rem 1.25rem;
+            backdrop-filter: blur(1.25rem);
+            z-index: 10;
+            transform: translateY(100%);
+            
+            p {
+                font-size: 1rem;
+                line-height: 1.5;
+                margin: 0;
+                color: rgba(255, 255, 255, 0.9);
+            }
+        }
+        
+        &.show-description {
+            .selo-image-container {
+                height: 10rem;
+            }
+            
+            .selo-image {
+                transform: translateY(-2rem);
+                width: 9rem;
+            }
+            
+            .selo-content {
+                height: 5rem;
+                
+                .selo-subtitle {
+                    font-size: 0.75rem;
+                }
+                
+                .selo-title {
+                    font-size: 1.3rem;
+                }
+            }
+            
+            .selo-description {
+                opacity: 1;
+                visibility: visible;
+                transform: translateY(0);
+                height: 10rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+    }
+    
+    // Responsive
+    @media (max-width: 48rem) {
+        padding: 2rem 0;
+        
+        .selo-box {
+            height: 21.875rem;
+            margin-bottom: 2rem;
+            
+            .selo-image-container {
+                height: 13.75rem;
+            }
+            
+            .selo-image {
+                width: 9.375rem;
+                transform: translateY(-2.5rem);
+            }
+            
+            .selo-content {
+                height: 8.125rem;
+            }
+            
+            .selo-title {
+                font-size: 1.5rem;
+            }
+            
+            &.show-description {
+                .selo-image-container {
+                    height: 8rem;
+                }
+                
+                .selo-image {
+                    transform: translateY(-1.5rem);
+                    width: 7rem;
+                }
+                
+                .selo-content {
+                    height: 4rem;
+                }
+                
+                .selo-description {
+                    height: 9.875rem;
+                    
+                    p {
+                        font-size: 0.9rem;
+                    }
+                }
+            }
+        }
+    }
+}
+
+#como-funcionam-os-testes{
+    background-color: #1e1e1e;
+}
+
+#planos-aprovacao{
+    background-color: #0f0f0f;
+    padding: 4rem 0;
+
+    .planos-aprovacao-wrapper{
+        .col-left{
+            img{
+                width: 100%;
+            }
+        }
+
+        .col-right{
+            .planos-aprovacao-content{
+                h2{
+                    font-family: $font-title;
+                    font-weight: $thin;
+                }
+
+                p{
+                    opacity: 0.8;
+                }
+
+                ul{
+                    opacity: 0.8;
+
+                    li{
+                        padding-bottom: 1rem;
+                        line-height: 1.6;
+                    }
+                }
+                
+            }
+        }
+    }
+
+   
+}
+
+#qual-escolher{
+    background-color: #1e1e1e;
+    padding: 4rem 0;
+
+    .qual-escolher-wrapper{
+        .col-left{
+            img{
+                width: 100%;
+            }
+        }
+
+        .col-right{
+            color: white;
+            
+            h2 {
+                font-family: $font-title;
+                font-weight: $thin;
+                text-transform: uppercase;
+                margin-bottom: 2rem;
+                font-size: 2.5rem;
+            }
+            
+            // Accordion Styles
+            .selo-accordion {
+                .accordion-item {
+                    background-color: #141414;
+                    border-radius: 0.5rem;
+                    margin-bottom: 1rem;
+                    overflow: hidden;
+                    transition: all 0.3s ease;
+                    
+                    .accordion-header {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        padding: 1.5rem 2rem;
+                        cursor: pointer;
+                        border-bottom: 0.0625rem solid rgba(255, 255, 255, 0.1);
+                        transition: all 0.3s ease;
+                        
+                        &:hover {
+                            background-color: rgba(255, 255, 255, 0.05);
+                        }
+                        
+                        h3 {
+                            font-family: $font-title;
+                            font-weight: $thin;
+                            text-transform: uppercase;
+                            font-size: 1.5rem;
+                            margin: 0;
+                            color: white;
+                            letter-spacing: 0.05em;
+                        }
+                        
+                        .accordion-icon {
+                            font-size: 1.5rem;
+                            font-weight: 300;
+                            color: white;
+                            transition: transform 0.3s ease;
+                            width: 2rem;
+                            height: 2rem;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            border: 0.0625rem solid rgba(255, 255, 255, 0.3);
+                            border-radius: 50%;
+                        }
+                    }
+                    
+                    .accordion-content {
+                        max-height: 0;
+                        opacity: 0;
+                        overflow: hidden;
+                        transition: all 0.4s ease;
+                        
+                        &.active {
+                            max-height: 50rem;
+                            opacity: 1;
+                        }
+                        
+                        .accordion-body {
+                            padding: 2rem;
+                            
+                            .indicado-para,
+                            .o-que-avaliamos {
+                                margin-bottom: 2rem;
+                                
+                                h4 {
+                                    font-family: $font-title;
+                                    font-weight: $thin;
+                                    text-transform: uppercase;
+                                    font-size: 1rem;
+                                    color: rgba(255, 255, 255, 0.9);
+                                    margin-bottom: 0.75rem;
+                                    letter-spacing: 0.1em;
+                                }
+                                
+                                p {
+                                    color: rgba(255, 255, 255, 0.8);
+                                    line-height: 1.6;
+                                    margin: 0;
+                                    font-size: 0.95rem;
+                                }
+                            }
+                            
+                            .ideal-para {
+                                position: relative;
+                                margin-top: 2rem;
+                                border: 0.0625rem solid rgba(255, 255, 255, 0.2);
+                                border-radius: 0.5rem;
+                                
+                                .ideal-para-tag {
+                                    position: absolute;
+                                    top: -0.75rem;
+                                    left: 1.5rem;
+                                    background-color: white;
+                                    color: black;
+                                    padding: 0.5rem 1.5rem 0.5rem 1rem;
+                                    display: inline-block;
+                                    z-index: 2;
+                                    
+                                    span {
+                                        font-family: $font-title;
+                                        font-weight: 700;
+                                        font-size: 0.75rem;
+                                        letter-spacing: 0.1em;
+                                        text-transform: uppercase;
+                                    }
+                                    
+                                    // Cut effect no canto inferior direito - igual ao teclab-title-box
+                                    &::after {
+                                        content: '';
+                                        position: absolute;
+                                        bottom: 0;
+                                        right: 0;
+                                        width: 0;
+                                        height: 0;
+                                        border-left: 0.75rem solid transparent;
+                                        border-bottom: 0.75rem solid #141414;
+                                        z-index: 1;
+                                    }
+                                }
+                                
+                                .ideal-para-content {
+                                    background: linear-gradient(135deg, 
+                                        rgba(0, 0, 0, 0.9) 0%, 
+                                        rgba(0, 0, 0, 0.7) 50%,
+                                        rgba(0, 0, 0, 0.5) 100%);
+                                    padding: 2rem 1.5rem 1.5rem 1.5rem;
+                                    border-radius: 0.5rem;
+                                    
+                                    p {
+                                        color: rgba(255, 255, 255, 0.9);
+                                        line-height: 1.6;
+                                        margin: 0;
+                                        font-size: 0.95rem;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+#por-que-confiar{
+    background-color: #0f0f0f;
+    padding: 4rem 0;
+    color: white;
+    padding-bottom: 0;
+
+    .por-que-confiar-wrapper{
+        padding-bottom: 4rem;
+        .row {
+            align-items: center;
+            min-height: 30rem;
+        }
+        
+        .col-left{
+            background-image: url('../../assets/img/fire.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: top;
+            padding: 3rem 2rem;
+            position: relative;
+
+            p{
+                opacity: 0.8;
+            }
+            
+            // Container principal - título e badges lado a lado
+            .header-content {
+                display: flex;
+                //align-items: center;
+                align-items: baseline;
+                justify-content: space-between;
+                margin-bottom: 3rem;
+                gap: 2rem;
+
+                .header-content-title{
+                    h2 {
+                        font-family: $font-title;
+                        font-weight: $thin;
+                        text-transform: uppercase;
+                        font-size: 2.5rem;
+                        margin: 0;
+                        line-height: 1.2;
+                        letter-spacing: 0.05em;
+                        flex: 0 0 auto;
+                        white-space: nowrap;
+                    }
+                }
+                
+                .images-stack {
+                    position: relative;
+                    flex: 1;
+                    height: 12rem;
+                    
+                    .image-item {
+                        position: absolute;
+                        transition: transform 0.3s ease;
+                        
+                        &:hover {
+                            transform: scale(1.05) translateY(-0.5rem);
+                            z-index: 10;
+                        }
+                        
+                        img {
+                            width: 180px;
+                            height: auto;
+                            filter: drop-shadow(0 0.5rem 1rem rgba(0, 0, 0, 0.3));
+                        }
+                        
+                        // Posicionamento sobreposto - igual ao banner
+                        &.image-1 {
+                            top: 0;
+                            right: 14rem;
+                            z-index: 3;
+                        }
+                        
+                        &.image-2 {
+                            top: 1rem;
+                            right: 7rem;
+                            z-index: 2;
+                        }
+                        
+                        &.image-3 {
+                            top: 2rem;
+                            right: -1rem;
+                            z-index: 1;
+                        }
+                    }
+                }
+            }
+            
+            .brand-title {
+                display: flex;
+                justify-content: left;
+                
+                img {
+                    width: auto;
+                    height: auto;
+                    filter: brightness(1.1) drop-shadow(0 0.5rem 1rem rgba(0, 0, 0, 0.4));
+                }
+            }
+        }
+
+        .col-right{
+            opacity: 0.9;
+
+            .ideal-para {
+                position: relative;
+                margin-top: 2rem;
+                border: 0.0625rem solid rgba(255, 255, 255, 0.2);
+                border-radius: 0.5rem;
+                
+                .ideal-para-tag {
+                    position: absolute;
+                    top: -0.75rem;
+                    left: 1.5rem;
+                    background-color: white;
+                    color: black;
+                    padding: 0.5rem 1.5rem 0.5rem 1rem;
+                    display: inline-block;
+                    z-index: 2;
+                    
+                    span {
+                        font-family: $font-title;
+                        font-weight: 700;
+                        letter-spacing: 0.1em;
+                        text-transform: uppercase;
+                    }
+                    
+                    // Cut effect no canto inferior direito - igual ao teclab-title-box
+                    &::after {
+                        content: '';
+                        position: absolute;
+                        bottom: 0;
+                        right: 0;
+                        width: 0;
+                        height: 0;
+                        border-left: 0.75rem solid transparent;
+                        border-bottom: 0.75rem solid #141414;
+                        z-index: 1;
+                    }
+                }
+                
+                .ideal-para-content {
+                    background: linear-gradient(135deg, 
+                        rgba(0, 0, 0, 0.9) 0%, 
+                        rgba(0, 0, 0, 0.7) 50%,
+                        rgba(0, 0, 0, 0.5) 100%);
+                    padding: 2rem 1.5rem 1.5rem 1.5rem;
+                    border-radius: 0.5rem;
+                    
+                    p {
+                        color: rgba(255, 255, 255, 0.9);
+                        line-height: 1.6;
+                        margin: 0;
+                        font-size: 0.95rem;
+                    }
+                }
+            }
+        }
+    }
+    
+    // Responsividade
+    @media (max-width: 768px) {
+        padding: 2rem 0;
+        
+        .por-que-confiar-wrapper {
+            .row {
+                min-height: auto;
+            }
+            
+            .col-left {
+                padding: 2rem 1rem;
+                margin-bottom: 2rem;
+                
+                .header-content {
+                    flex-direction: column;
+                    align-items: center;
+                    gap: 1.5rem;
+                    margin-bottom: 2rem;
+                    
+                    h2 {
+                        font-size: 2rem;
+                        text-align: center;
+                        white-space: normal;
+                    }
+                    
+                    .images-stack {
+                        height: 8rem;
+                        
+                        .image-item {
+                            img {
+                                width: 120px;
+                            }
+                            
+                            // Posicionamento mobile - mais centralizado
+                            &.image-1 {
+                                top: 0;
+                                right: 4rem;
+                                z-index: 3;
+                            }
+                            
+                            &.image-2 {
+                                top: 0.5rem;
+                                right: 2rem;
+                                z-index: 2;
+                            }
+                            
+                            &.image-3 {
+                                top: 1rem;
+                                right: 0;
+                                z-index: 1;
+                            }
+                        }
+                    }
+                }
+                
+                .brand-title {
+                    img {
+                        width: 10rem;
+                    }
+                }
+            }
+            
+            .col-right {
+                
+                
+                
+            }
+        }
+    }
+}
+

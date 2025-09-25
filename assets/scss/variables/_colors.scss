@@ -1,0 +1,40 @@
+$transparent:           transparent;
+$pure-white:            #fff;
+$white:                 #f0f0f0;
+$gray-lightest:         #eee;
+$gray-lighter:          #ddd;
+$gray-light:            #999;
+$gray-medium:           #666;
+$gray-dark:             #333;
+$gray-darker:           #222;
+$gray-darkest:          #111;
+$black:                 #2A2A2A;
+$pure-black:            #000;
+$red:                   #ff3838;
+$gold:                  #d29300;
+$blue-light:            #1e71b8;
+$blue:                  #0521b0;
+$dark-blue:             rgba(10, 65, 119, 0.8);
+$green:                 #11A84B;
+
+// create a color map
+$colors: (
+    'transparent':      $transparent,
+    'pure-white':       $pure-white,
+    'white':            $white,
+    'gray-lightest':    $gray-lightest,
+    'gray-lighter':     $gray-lighter,
+    'gray-light':       $gray-light,
+    'gray-medium':      $gray-medium,
+    'gray-dark':        $gray-dark,
+    'gray-darker':      $gray-darker,
+    'gray-darkest':     $gray-darkest,
+    'black':            $black,
+    'pure-black':       $pure-black,
+    'red':              $red,
+    'gold':             $gold,
+    'blue-light':       $blue-light,
+    'blue':             $blue,
+    'dark-blue':        $dark-blue,
+    'green':            $green
+);

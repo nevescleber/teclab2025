@@ -1,0 +1,22 @@
+// variables
+@import 'variables/colors';
+@import 'variables/fonts';
+@import 'variables/breakpoints';
+@import 'variables/texts';
+@import 'variables/reusable';
+
+// mixins
+//@import 'mixins/gradients';
+
+// breakpoint indicator (comentar em prod)
+@import 'atoms/breakpoints';
+@import 'atoms/containers';
+@import 'atoms/buttons';
+
+// components
+@import 'components/menu';
+@import 'components/banner';
+@import 'components/footer';
+
+//pages
+@import 'pages/index';
