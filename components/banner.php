@@ -17,10 +17,6 @@
                     </div>
                 </div>
 
-                <section class="cut-header" aria-label="Selos de aprovação" style="display: none;">
-                    <h2>SELOS DE APROVAÇÃO</h2>
-                </section>
-                
                 <div class="brand-title">
                     <img src="<?php echo get_template_directory_uri(); ?>/assets/img/logo-banner.png" alt="TecLab">
                 </div>

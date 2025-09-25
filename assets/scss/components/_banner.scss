@@ -83,15 +83,26 @@
             .title-badge {
                 position: relative;
                 display: inline-block;
-                background: white;
-                padding: 0.9375rem 1.875rem 0.9375rem 1.25rem;
-                clip-path: polygon(0 0, calc(100% - 1.25rem) 0, 100% 100%, 0 100%);
+                background: $white;
+                padding: 0.9375rem 2.5rem 0.9375rem 1.25rem;
                 font-family: $font-title;
                 
+                // Cut effect no canto inferior direito
+                &::after {
+                    content: '';
+                    position: absolute;
+                    bottom: 0;
+                    right: 0;
+                    width: 0;
+                    height: 0;
+                    border-left: 1.25rem solid transparent;
+                    border-bottom: 1.25rem solid #040404;
+                    z-index: 1;
+                }
+                
                 h1 {
-                    font-size: 1.5rem;
-                    font-weight: 700;
-                    color: #333;
+                    font-weight: $regular;
+                    color: #000;
                     margin: 0;
                     letter-spacing: 0.0625rem;
                 }
@@ -158,9 +169,10 @@
             max-width: 31.25rem;
             
             p {
-                color: rgba(255, 255, 255, 0.9);
+                color: $white;
                 margin: 0;
                 text-shadow: 0.0625rem 0.0625rem 0.125rem rgba(0, 0, 0, 0.5);
+                opacity: 0.8;
             }
         }
     }
@@ -224,6 +236,19 @@
         }
         
         .content-left {
+            .title-section .title-badge {
+                padding: 0.875rem 2.25rem 0.875rem 1.125rem;
+                
+                &::after {
+                    border-left: 1.125rem solid transparent;
+                    border-bottom: 1.125rem solid transparent;
+                }
+                
+                h1 {
+                    font-size: 1.375rem;
+                }
+            }
+            
             .brand-title h2 {
                 font-size: 3.5rem;
             }
@@ -272,7 +297,12 @@
         
         .content-left {
             .title-section .title-badge {
-                padding: 0.75rem 1.5625rem 0.75rem 0.9375rem;
+                padding: 0.75rem 2rem 0.75rem 0.9375rem;
+                
+                &::after {
+                    border-left: 1rem solid transparent;
+                    border-bottom: 1rem solid transparent;
+                }
                 
                 h1 {
                     font-size: 1.125rem;

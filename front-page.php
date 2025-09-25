@@ -33,7 +33,7 @@
         <div class="sobre-selos-wrapper">
             <div class="row">
                 <div class="col-12">
-                    <h1>Sobre os selos</h1>
+                    <h2 class="text-big">SELOS TecLab</h2>
                     <p>O selo que separa o marketing da realidade.</p>
                 </div>
             </div>
@@ -83,11 +83,95 @@
 </section>
 
 <section id="como-funcionam-os-testes">
-    <div class="container container--big">
-        <div class="como-funcionam-os-testes-wrapper">
+    <div class="container-fluid">
+        <div class="como-funcionam-wrapper">
+            <div class="container container--big">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="section-header">
+                            <h2 class="section-title text-big">Como funcionam os testes?</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
             <div class="row">
                 <div class="col-12">
-                    <h1>Como funcionam os testes</h1>
+                    <div class="swiper-container testes-swiper">
+                        <div class="swiper-wrapper">
+                            <!-- Slide 1 -->
+                            <div class="swiper-slide">
+                                <div class="teste-card">
+                                    <div class="teste-number">
+                                        <span>1</span>
+                                    </div>
+                                    <div class="teste-content">
+                                        <h3 class="teste-title text-medium">RECEBIMENTO</h3>
+                                        <p class="teste-description">O produto chega, é catalogado e registrado com número de lote.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Slide 2 -->
+                            <div class="swiper-slide">
+                                <div class="teste-card">
+                                    <div class="teste-number">
+                                        <span>2</span>
+                                    </div>
+                                    <div class="teste-content">
+                                        <h3 class="teste-title text-medium">TESTES</h3>
+                                        <p class="teste-description">Análises detalhadas com protocolos imparciais e comparações diretas com as especificações prometidas.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Slide 3 -->
+                            <div class="swiper-slide">
+                                <div class="teste-card">
+                                    <div class="teste-number">
+                                        <span>3</span>
+                                    </div>
+                                    <div class="teste-content">
+                                        <h3 class="teste-title text-medium">AVALIAÇÃO</h3>
+                                        <p class="teste-description">Decisão clara: aprovado para selo ou reprovado. Sem meio-termo.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Slide 4 -->
+                            <div class="swiper-slide">
+                                <div class="teste-card">
+                                    <div class="teste-number">
+                                        <span>4</span>
+                                    </div>
+                                    <div class="teste-content">
+                                        <h3 class="teste-title text-medium">CONSULTORIA</h3>
+                                        <p class="teste-description">Fabricantes podem contam com nossa experiência desde o desenvolvimento do produto.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Slide 5 -->
+                            <div class="swiper-slide">
+                                <div class="teste-card">
+                                    <div class="teste-number">
+                                        <span>5</span>
+                                    </div>
+                                    <div class="teste-content">
+                                        <h3 class="teste-title text-medium">SELOS TECLAB</h3>
+                                        <p class="teste-description">Produtos aprovados recebem o selo correspondente à sua categoria.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Navigation -->
+                        <div class="swiper-navigation">
+                            <div class="swiper-scrollbar">
+                                <div class="swiper-scrollbar-drag"></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -140,12 +224,12 @@
                                 <div class="accordion-body">
                                     <div class="indicado-para">
                                         <h4>Indicado para</h4>
-                                        <p>Consumidores que buscam baixo custo, como PCs de entrada e componentes acessíveis.</p>
+                                        <p class="text-medium">Consumidores que buscam baixo custo, como PCs de entrada e componentes acessíveis.</p>
                                     </div>
                                     
                                     <div class="o-que-avaliamos">
                                         <h4>O que avaliamos</h4>
-                                        <p>Confirmamos que o produto segue as especificações técnicas prometidas, mesmo que o foco não seja desempenho ou qualidade, mas sim o cumprimento de requisitos básicos com dignidade.</p>
+                                        <p class="text-medium">Confirmamos que o produto segue as especificações técnicas prometidas, mesmo que o foco não seja desempenho ou qualidade, mas sim o cumprimento de requisitos básicos com dignidade.</p>
                                     </div>
                                     
                                     <div class="ideal-para">
@@ -153,7 +237,7 @@
                                             <span>IDEAL PARA</span>
                                         </div>
                                         <div class="ideal-para-content">
-                                            <p>Home office, jogos casuais e para quem precisa de um equipamento de baixo custo, mas confiável, sem abrir mão do essencial.</p>
+                                            <p class="text-medium">Home office, jogos casuais e para quem precisa de um equipamento de baixo custo, mas confiável, sem abrir mão do essencial.</p>
                                         </div>
                                     </div>
                                 </div>
@@ -170,12 +254,12 @@
                                 <div class="accordion-body">
                                     <div class="indicado-para">
                                         <h4>Indicado para</h4>
-                                        <p>Gamers e entusiastas que buscam desempenho superior em jogos e aplicações exigentes.</p>
+                                        <p class="text-medium">Gamers e entusiastas que buscam desempenho superior em jogos e aplicações exigentes.</p>
                                     </div>
                                     
                                     <div class="o-que-avaliamos">
                                         <h4>O que avaliamos</h4>
-                                        <p>Testamos extensivamente o desempenho em jogos, temperaturas, estabilidade e qualidade de construção para garantir experiência gaming premium.</p>
+                                        <p class="text-medium">Testamos extensivamente o desempenho em jogos, temperaturas, estabilidade e qualidade de construção para garantir experiência gaming premium.</p>
                                     </div>
                                     
                                     <div class="ideal-para">
@@ -183,7 +267,7 @@
                                             <span>IDEAL PARA</span>
                                         </div>
                                         <div class="ideal-para-content">
-                                            <p>Gaming competitivo, streaming, criação de conteúdo e aplicações que demandam alto desempenho.</p>
+                                            <p class="text-medium">Gaming competitivo, streaming, criação de conteúdo e aplicações que demandam alto desempenho.</p>
                                         </div>
                                     </div>
                                 </div>

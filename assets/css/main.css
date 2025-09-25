@@ -740,16 +740,26 @@ body:before {
 .hero-banner .content-left .title-section .title-badge {
   position: relative;
   display: inline-block;
-  background: white;
-  padding: 0.9375rem 1.875rem 0.9375rem 1.25rem;
-  clip-path: polygon(0 0, calc(100% - 1.25rem) 0, 100% 100%, 0 100%);
+  background: #f0f0f0;
+  padding: 0.9375rem 2.5rem 0.9375rem 1.25rem;
   font-family: "Oxanium", sans-serif;
 }
 
+.hero-banner .content-left .title-section .title-badge::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  border-left: 1.25rem solid transparent;
+  border-bottom: 1.25rem solid #040404;
+  z-index: 1;
+}
+
 .hero-banner .content-left .title-section .title-badge h1 {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #333;
+  font-weight: 400;
+  color: #000;
   margin: 0;
   letter-spacing: 0.0625rem;
 }
@@ -808,9 +818,10 @@ body:before {
 }
 
 .hero-banner .content-left .description p {
-  color: rgba(255, 255, 255, 0.9);
+  color: #f0f0f0;
   margin: 0;
   text-shadow: 0.0625rem 0.0625rem 0.125rem rgba(0, 0, 0, 0.5);
+  opacity: 0.8;
 }
 
 .hero-banner .content-right {
@@ -865,6 +876,16 @@ body:before {
     gap: 3.125rem;
     text-align: center;
   }
+  .hero-banner .content-left .title-section .title-badge {
+    padding: 0.875rem 2.25rem 0.875rem 1.125rem;
+  }
+  .hero-banner .content-left .title-section .title-badge::after {
+    border-left: 1.125rem solid transparent;
+    border-bottom: 1.125rem solid transparent;
+  }
+  .hero-banner .content-left .title-section .title-badge h1 {
+    font-size: 1.375rem;
+  }
   .hero-banner .content-left .brand-title h2 {
     font-size: 3.5rem;
   }
@@ -900,7 +921,11 @@ body:before {
     padding: 7.5rem 0 3.75rem;
   }
   .hero-banner .content-left .title-section .title-badge {
-    padding: 0.75rem 1.5625rem 0.75rem 0.9375rem;
+    padding: 0.75rem 2rem 0.75rem 0.9375rem;
+  }
+  .hero-banner .content-left .title-section .title-badge::after {
+    border-left: 1rem solid transparent;
+    border-bottom: 1rem solid transparent;
   }
   .hero-banner .content-left .title-section .title-badge h1 {
     font-size: 1.125rem;
@@ -1219,8 +1244,27 @@ body {
   color: #f0f0f0;
 }
 
-#sobre-selos .sobre-selos-wrapper h1 {
+#sobre-selos .sobre-selos-wrapper h2 {
+  position: relative;
+  display: inline-block;
+  background: #f0f0f0;
+  color: #000;
+  padding: 1rem 2.5rem 1rem 1.5rem;
   margin-bottom: 1rem;
+  font-family: "Oxanium", sans-serif;
+  font-weight: 400;
+}
+
+#sobre-selos .sobre-selos-wrapper h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  border-left: 1.25rem solid transparent;
+  border-bottom: 1.25rem solid #0f0f0f;
+  z-index: 1;
 }
 
 #sobre-selos .sobre-selos-wrapper p {
@@ -1404,6 +1448,28 @@ body {
   justify-content: center;
 }
 
+@media (max-width: 768px) {
+  #sobre-selos .sobre-selos-wrapper h2 {
+    font-size: 2rem;
+    padding: 0.875rem 2rem 0.875rem 1.25rem;
+  }
+  #sobre-selos .sobre-selos-wrapper h2::after {
+    border-left: 1rem solid transparent;
+    border-bottom: 1rem solid #0f0f0f;
+  }
+}
+
+@media (max-width: 480px) {
+  #sobre-selos .sobre-selos-wrapper h2 {
+    font-size: 1.75rem;
+    padding: 0.75rem 1.75rem 0.75rem 1rem;
+  }
+  #sobre-selos .sobre-selos-wrapper h2::after {
+    border-left: 0.875rem solid transparent;
+    border-bottom: 0.875rem solid #0f0f0f;
+  }
+}
+
 @media (max-width: 48rem) {
   #sobre-selos {
     padding: 2rem 0;
@@ -1445,6 +1511,273 @@ body {
 
 #como-funcionam-os-testes {
   background-color: #1e1e1e;
+  padding: 4rem 0;
+  overflow: hidden;
+}
+
+#como-funcionam-os-testes .como-funcionam-wrapper .section-header {
+  text-align: left;
+  margin-bottom: 3rem;
+}
+
+#como-funcionam-os-testes .como-funcionam-wrapper .section-header .section-title {
+  position: relative;
+  display: inline-block;
+  background: #f0f0f0;
+  color: #000;
+  padding: 1rem 2.5rem 1rem 1.5rem;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  font-family: "Oxanium", sans-serif;
+  font-weight: 100;
+}
+
+#como-funcionam-os-testes .como-funcionam-wrapper .section-header .section-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  border-left: 1.25rem solid transparent;
+  border-bottom: 1.25rem solid #1e1e1e;
+  z-index: 1;
+}
+
+#como-funcionam-os-testes .como-funcionam-wrapper .testes-swiper {
+  width: 100%;
+  overflow: visible;
+  padding-bottom: 4rem;
+}
+
+#como-funcionam-os-testes .como-funcionam-wrapper .testes-swiper .swiper-wrapper {
+  display: flex;
+  transition-timing-function: ease-in-out;
+}
+
+#como-funcionam-os-testes .como-funcionam-wrapper .testes-swiper .swiper-slide {
+  width: auto;
+  flex-shrink: 0;
+  margin-right: 1.5rem;
+}
+
+#como-funcionam-os-testes .como-funcionam-wrapper .testes-swiper .swiper-slide:last-child {
+  margin-right: 0;
+}
+
+#como-funcionam-os-testes .como-funcionam-wrapper .testes-swiper .swiper-slide .teste-card {
+  background: transparent;
+  border-radius: 1rem;
+  padding: 2rem;
+  width: 32.875rem;
+  height: 7.875rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 2rem;
+  transition: all 0.3s ease;
+  border: 0.125rem solid rgba(255, 255, 255, 0.8);
+}
+
+#como-funcionam-os-testes .como-funcionam-wrapper .testes-swiper .swiper-slide .teste-card:hover {
+  transform: translateY(-0.25rem);
+  border-color: white;
+  box-shadow: 0 0.5rem 2rem rgba(255, 255, 255, 0.1);
+}
+
+#como-funcionam-os-testes .como-funcionam-wrapper .testes-swiper .swiper-slide .teste-card .teste-number {
+  background: #191919;
+  width: 6.875rem;
+  height: 6.875rem;
+  border-radius: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+#como-funcionam-os-testes .como-funcionam-wrapper .testes-swiper .swiper-slide .teste-card .teste-number span {
+  color: #ffffff;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+#como-funcionam-os-testes .como-funcionam-wrapper .testes-swiper .swiper-slide .teste-card .teste-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 6.875rem;
+}
+
+#como-funcionam-os-testes .como-funcionam-wrapper .testes-swiper .swiper-slide .teste-card .teste-content .teste-title {
+  color: #f0f0f0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  opacity: 0.8;
+  margin: 0;
+}
+
+#como-funcionam-os-testes .como-funcionam-wrapper .testes-swiper .swiper-slide .teste-card .teste-content .teste-description {
+  color: #cccccc;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+#como-funcionam-os-testes .como-funcionam-wrapper .testes-swiper .swiper-navigation {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+#como-funcionam-os-testes .como-funcionam-wrapper .testes-swiper .swiper-navigation .swiper-scrollbar {
+  width: 44.25rem;
+  height: 0.586rem;
+  background: #333333;
+  border-radius: 0.293rem;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#como-funcionam-os-testes .como-funcionam-wrapper .testes-swiper .swiper-navigation .swiper-scrollbar:hover {
+  background: #444444;
+}
+
+#como-funcionam-os-testes .como-funcionam-wrapper .testes-swiper .swiper-navigation .swiper-scrollbar .swiper-scrollbar-drag {
+  height: 100%;
+  background: linear-gradient(90deg, #000000, #ffffff);
+  border-radius: 0.293rem;
+  position: absolute;
+  left: 0;
+  top: 0;
+  cursor: grab;
+  transition: all 0.3s ease;
+  min-width: 2.34rem;
+}
+
+#como-funcionam-os-testes .como-funcionam-wrapper .testes-swiper .swiper-navigation .swiper-scrollbar .swiper-scrollbar-drag:active {
+  cursor: grabbing;
+}
+
+#como-funcionam-os-testes .como-funcionam-wrapper .testes-swiper .swiper-navigation .swiper-scrollbar .swiper-scrollbar-drag:hover {
+  box-shadow: 0 0 0.5rem rgba(255, 255, 255, 0.4);
+}
+
+@media (max-width: 1200px) {
+  #como-funcionam-os-testes .como-funcionam-wrapper .testes-swiper .swiper-slide .teste-card {
+    width: 32rem;
+    height: 10rem;
+    padding: 1.75rem;
+    gap: 1.75rem;
+  }
+  #como-funcionam-os-testes .como-funcionam-wrapper .testes-swiper .swiper-slide .teste-card .teste-number {
+    width: 6rem;
+    height: 6rem;
+  }
+  #como-funcionam-os-testes .como-funcionam-wrapper .testes-swiper .swiper-slide .teste-card .teste-number span {
+    font-size: 1.75rem;
+  }
+  #como-funcionam-os-testes .como-funcionam-wrapper .testes-swiper .swiper-slide .teste-card .teste-content {
+    height: 6rem;
+  }
+  #como-funcionam-os-testes .como-funcionam-wrapper .testes-swiper .swiper-slide .teste-card .teste-content .teste-title {
+    font-size: 1.375rem;
+  }
+  #como-funcionam-os-testes .como-funcionam-wrapper .testes-swiper .swiper-slide .teste-card .teste-content .teste-description {
+    font-size: 0.95rem;
+  }
+  #como-funcionam-os-testes .como-funcionam-wrapper .testes-swiper .swiper-navigation .swiper-scrollbar {
+    width: 38.4rem;
+    height: 0.516rem;
+  }
+}
+
+@media (max-width: 768px) {
+  #como-funcionam-os-testes {
+    padding: 3rem 0;
+  }
+  #como-funcionam-os-testes .como-funcionam-wrapper .section-header {
+    margin-bottom: 2rem;
+  }
+  #como-funcionam-os-testes .como-funcionam-wrapper .section-header .section-title {
+    font-size: 2rem;
+    padding: 0.875rem 2rem 0.875rem 1.25rem;
+  }
+  #como-funcionam-os-testes .como-funcionam-wrapper .section-header .section-title::after {
+    border-left: 1rem solid transparent;
+    border-bottom: 1rem solid #1e1e1e;
+  }
+  #como-funcionam-os-testes .como-funcionam-wrapper .testes-swiper .swiper-slide {
+    margin-right: 1rem;
+  }
+  #como-funcionam-os-testes .como-funcionam-wrapper .testes-swiper .swiper-slide .teste-card {
+    width: 28rem;
+    height: 9.5rem;
+    padding: 1.5rem;
+    gap: 1.5rem;
+  }
+  #como-funcionam-os-testes .como-funcionam-wrapper .testes-swiper .swiper-slide .teste-card .teste-number {
+    width: 5.5rem;
+    height: 5.5rem;
+  }
+  #como-funcionam-os-testes .como-funcionam-wrapper .testes-swiper .swiper-slide .teste-card .teste-number span {
+    font-size: 1.5rem;
+  }
+  #como-funcionam-os-testes .como-funcionam-wrapper .testes-swiper .swiper-slide .teste-card .teste-content {
+    height: 5.5rem;
+  }
+  #como-funcionam-os-testes .como-funcionam-wrapper .testes-swiper .swiper-slide .teste-card .teste-content .teste-title {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+  }
+  #como-funcionam-os-testes .como-funcionam-wrapper .testes-swiper .swiper-slide .teste-card .teste-content .teste-description {
+    font-size: 0.9rem;
+  }
+  #como-funcionam-os-testes .como-funcionam-wrapper .testes-swiper .swiper-navigation .swiper-scrollbar {
+    width: 32.4rem;
+    height: 0.39rem;
+  }
+}
+
+@media (max-width: 480px) {
+  #como-funcionam-os-testes .como-funcionam-wrapper .section-header .section-title {
+    font-size: 1.75rem;
+    padding: 0.75rem 1.75rem 0.75rem 1rem;
+  }
+  #como-funcionam-os-testes .como-funcionam-wrapper .section-header .section-title::after {
+    border-left: 0.875rem solid transparent;
+    border-bottom: 0.875rem solid #1e1e1e;
+  }
+  #como-funcionam-os-testes .como-funcionam-wrapper .testes-swiper .swiper-slide .teste-card {
+    width: 22rem;
+    height: 9rem;
+    padding: 1.25rem;
+    gap: 1.25rem;
+  }
+  #como-funcionam-os-testes .como-funcionam-wrapper .testes-swiper .swiper-slide .teste-card .teste-number {
+    width: 5rem;
+    height: 5rem;
+  }
+  #como-funcionam-os-testes .como-funcionam-wrapper .testes-swiper .swiper-slide .teste-card .teste-number span {
+    font-size: 1.375rem;
+  }
+  #como-funcionam-os-testes .como-funcionam-wrapper .testes-swiper .swiper-slide .teste-card .teste-content {
+    height: 5rem;
+  }
+  #como-funcionam-os-testes .como-funcionam-wrapper .testes-swiper .swiper-slide .teste-card .teste-content .teste-title {
+    font-size: 1.125rem;
+  }
+  #como-funcionam-os-testes .como-funcionam-wrapper .testes-swiper .swiper-slide .teste-card .teste-content .teste-description {
+    font-size: 0.85rem;
+  }
+  #como-funcionam-os-testes .como-funcionam-wrapper .testes-swiper .swiper-navigation .swiper-scrollbar {
+    width: 24rem;
+    height: 0.36rem;
+  }
 }
 
 #planos-aprovacao {
@@ -1530,7 +1863,7 @@ body {
 #qual-escolher .qual-escolher-wrapper .col-right .selo-accordion .accordion-item .accordion-header .accordion-icon {
   font-size: 1.5rem;
   font-weight: 300;
-  color: white;
+  color: #2A2A2A;
   transition: transform 0.3s ease;
   width: 2rem;
   height: 2rem;
@@ -1538,7 +1871,7 @@ body {
   align-items: center;
   justify-content: center;
   border: 0.0625rem solid rgba(255, 255, 255, 0.3);
-  border-radius: 50%;
+  background-color: #f0f0f0;
 }
 
 #qual-escolher .qual-escolher-wrapper .col-right .selo-accordion .accordion-item .accordion-content {
@@ -1565,9 +1898,8 @@ body {
 #qual-escolher .qual-escolher-wrapper .col-right .selo-accordion .accordion-item .accordion-content .accordion-body .indicado-para h4,
 #qual-escolher .qual-escolher-wrapper .col-right .selo-accordion .accordion-item .accordion-content .accordion-body .o-que-avaliamos h4 {
   font-family: "Oxanium", sans-serif;
-  font-weight: 100;
+  font-weight: 700;
   text-transform: uppercase;
-  font-size: 1rem;
   color: rgba(255, 255, 255, 0.9);
   margin-bottom: 0.75rem;
   letter-spacing: 0.1em;
@@ -1578,7 +1910,7 @@ body {
   color: rgba(255, 255, 255, 0.8);
   line-height: 1.6;
   margin: 0;
-  font-size: 0.95rem;
+  opacity: 0.8;
 }
 
 #qual-escolher .qual-escolher-wrapper .col-right .selo-accordion .accordion-item .accordion-content .accordion-body .ideal-para {
@@ -1602,7 +1934,6 @@ body {
 #qual-escolher .qual-escolher-wrapper .col-right .selo-accordion .accordion-item .accordion-content .accordion-body .ideal-para .ideal-para-tag span {
   font-family: "Oxanium", sans-serif;
   font-weight: 700;
-  font-size: 0.75rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
@@ -1615,21 +1946,25 @@ body {
   width: 0;
   height: 0;
   border-left: 0.75rem solid transparent;
-  border-bottom: 0.75rem solid #141414;
+  border-bottom: 0.75rem solid #2a2a2a;
   z-index: 1;
 }
 
 #qual-escolher .qual-escolher-wrapper .col-right .selo-accordion .accordion-item .accordion-content .accordion-body .ideal-para .ideal-para-content {
-  background: linear-gradient(135deg, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.7) 50%, rgba(0, 0, 0, 0.5) 100%);
+  /*background: linear-gradient(135deg, 
+                                        rgba(0, 0, 0, 0.9) 0%, 
+                                        rgba(0, 0, 0, 0.7) 50%,
+                                        rgba(0, 0, 0, 0.5) 100%);*/
   padding: 2rem 1.5rem 1.5rem 1.5rem;
   border-radius: 0.5rem;
+  background: linear-gradient(180deg, #2a2a2a 0%, #262626 18%, #1b1b1b 50%, #131313 75%, #0c0c0c 100%);
 }
 
 #qual-escolher .qual-escolher-wrapper .col-right .selo-accordion .accordion-item .accordion-content .accordion-body .ideal-para .ideal-para-content p {
   color: rgba(255, 255, 255, 0.9);
   line-height: 1.6;
   margin: 0;
-  font-size: 0.95rem;
+  opacity: 0.8;
 }
 
 #por-que-confiar {
@@ -1769,21 +2104,25 @@ body {
   width: 0;
   height: 0;
   border-left: 0.75rem solid transparent;
-  border-bottom: 0.75rem solid #141414;
+  border-bottom: 0.75rem solid #252525;
   z-index: 1;
 }
 
 #por-que-confiar .por-que-confiar-wrapper .col-right .ideal-para .ideal-para-content {
-  background: linear-gradient(135deg, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.7) 50%, rgba(0, 0, 0, 0.5) 100%);
+  /*background: linear-gradient(135deg, 
+                        rgba(0, 0, 0, 0.9) 0%, 
+                        rgba(0, 0, 0, 0.7) 50%,
+                        rgba(0, 0, 0, 0.5) 100%);*/
+  background: linear-gradient(180deg, #2a2a2a 0%, #262626 18%, #1b1b1b 50%, #131313 75%, #0c0c0c 100%);
   padding: 2rem 1.5rem 1.5rem 1.5rem;
   border-radius: 0.5rem;
 }
 
 #por-que-confiar .por-que-confiar-wrapper .col-right .ideal-para .ideal-para-content p {
   color: rgba(255, 255, 255, 0.9);
-  line-height: 1.6;
   margin: 0;
-  font-size: 0.95rem;
+  opacity: 0.8;
+  padding: 1rem 0;
 }
 
 @media (max-width: 768px) {

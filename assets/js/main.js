@@ -203,6 +203,203 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+
+    // Swiper functionality for testes slider
+    const testesSwiper = document.querySelector('.testes-swiper');
+    if (testesSwiper) {
+        const wrapper = testesSwiper.querySelector('.swiper-wrapper');
+        const slides = testesSwiper.querySelectorAll('.swiper-slide');
+        const scrollbar = testesSwiper.querySelector('.swiper-scrollbar');
+        const scrollbarDrag = testesSwiper.querySelector('.swiper-scrollbar-drag');
+        
+        if (slides.length > 0 && wrapper && scrollbar && scrollbarDrag) {
+            let currentTranslate = 0;
+            let maxTranslate = 0;
+            let isDragging = false;
+            let startX = 0;
+            let currentX = 0;
+            let animationId = 0;
+            let isScrollbarDragging = false;
+            
+            // Calculate container and content widths
+            function calculateDimensions() {
+                const containerWidth = testesSwiper.offsetWidth;
+                const slideWidth = slides[0].offsetWidth + 24; // 24px = 1.5rem margin
+                const totalWidth = slideWidth * slides.length;
+                maxTranslate = Math.max(0, totalWidth - containerWidth);
+                
+                // Show partial slide when there are more than 3 slides
+                if (slides.length > 3) {
+                    maxTranslate += slideWidth * 0.5; // Show half of the next slide
+                }
+                
+                updateScrollbar();
+            }
+            
+            // Update scrollbar position and size
+            function updateScrollbar() {
+                if (maxTranslate === 0) {
+                    scrollbarDrag.style.width = '100%';
+                    scrollbarDrag.style.left = '0%';
+                    return;
+                }
+                
+                const progress = Math.abs(currentTranslate) / maxTranslate;
+                const dragWidth = Math.max(10, (1 - maxTranslate / (testesSwiper.offsetWidth * 2)) * 100);
+                const dragPosition = progress * (100 - dragWidth);
+                
+                scrollbarDrag.style.width = `${dragWidth}%`;
+                scrollbarDrag.style.left = `${dragPosition}%`;
+            }
+            
+            // Set transform
+            function setSliderPosition() {
+                wrapper.style.transform = `translateX(${-currentTranslate}px)`;
+                updateScrollbar();
+            }
+            
+            // Animation function
+            function animation() {
+                setSliderPosition();
+                if (isDragging) requestAnimationFrame(animation);
+            }
+            
+            // Touch/Mouse start
+            function dragStart(e) {
+                if (isScrollbarDragging) return;
+                
+                isDragging = true;
+                startX = e.type.includes('mouse') ? e.clientX : e.touches[0].clientX;
+                currentX = startX;
+                
+                wrapper.style.transition = 'none';
+                testesSwiper.style.cursor = 'grabbing';
+                
+                if (e.type.includes('mouse')) {
+                    document.addEventListener('mousemove', dragMove);
+                    document.addEventListener('mouseup', dragEnd);
+                }
+                
+                requestAnimationFrame(animation);
+            }
+            
+            // Touch/Mouse move
+            function dragMove(e) {
+                if (!isDragging || isScrollbarDragging) return;
+                
+                e.preventDefault();
+                currentX = e.type.includes('mouse') ? e.clientX : e.touches[0].clientX;
+                const deltaX = currentX - startX;
+                const newTranslate = currentTranslate - deltaX;
+                
+                // Add resistance at boundaries
+                if (newTranslate < 0) {
+                    currentTranslate = newTranslate * 0.5;
+                } else if (newTranslate > maxTranslate) {
+                    currentTranslate = maxTranslate + (newTranslate - maxTranslate) * 0.5;
+                } else {
+                    currentTranslate = newTranslate;
+                }
+                
+                startX = currentX;
+            }
+            
+            // Touch/Mouse end
+            function dragEnd() {
+                isDragging = false;
+                testesSwiper.style.cursor = 'grab';
+                
+                // Snap back to boundaries
+                if (currentTranslate < 0) {
+                    currentTranslate = 0;
+                } else if (currentTranslate > maxTranslate) {
+                    currentTranslate = maxTranslate;
+                }
+                
+                wrapper.style.transition = 'transform 0.3s ease-out';
+                setSliderPosition();
+                
+                document.removeEventListener('mousemove', dragMove);
+                document.removeEventListener('mouseup', dragEnd);
+            }
+            
+            // Scrollbar drag functionality
+            function scrollbarDragStart(e) {
+                e.preventDefault();
+                isScrollbarDragging = true;
+                const rect = scrollbar.getBoundingClientRect();
+                const clickX = (e.type.includes('mouse') ? e.clientX : e.touches[0].clientX) - rect.left;
+                const percentage = clickX / rect.width;
+                
+                currentTranslate = percentage * maxTranslate;
+                if (currentTranslate < 0) currentTranslate = 0;
+                if (currentTranslate > maxTranslate) currentTranslate = maxTranslate;
+                
+                wrapper.style.transition = 'transform 0.3s ease-out';
+                setSliderPosition();
+                
+                if (e.type.includes('mouse')) {
+                    document.addEventListener('mousemove', scrollbarDragMove);
+                    document.addEventListener('mouseup', scrollbarDragEnd);
+                }
+            }
+            
+            function scrollbarDragMove(e) {
+                if (!isScrollbarDragging) return;
+                
+                e.preventDefault();
+                const rect = scrollbar.getBoundingClientRect();
+                const clickX = (e.type.includes('mouse') ? e.clientX : e.touches[0].clientX) - rect.left;
+                const percentage = Math.max(0, Math.min(1, clickX / rect.width));
+                
+                currentTranslate = percentage * maxTranslate;
+                wrapper.style.transition = 'none';
+                setSliderPosition();
+            }
+            
+            function scrollbarDragEnd() {
+                isScrollbarDragging = false;
+                document.removeEventListener('mousemove', scrollbarDragMove);
+                document.removeEventListener('mouseup', scrollbarDragEnd);
+            }
+            
+            // Event listeners
+            wrapper.addEventListener('mousedown', dragStart);
+            wrapper.addEventListener('touchstart', dragStart, { passive: false });
+            wrapper.addEventListener('touchmove', dragMove, { passive: false });
+            wrapper.addEventListener('touchend', dragEnd);
+            
+            scrollbar.addEventListener('mousedown', scrollbarDragStart);
+            scrollbar.addEventListener('touchstart', scrollbarDragStart, { passive: false });
+            scrollbar.addEventListener('touchmove', scrollbarDragMove, { passive: false });
+            scrollbar.addEventListener('touchend', scrollbarDragEnd);
+            
+            // Prevent default drag behavior
+            wrapper.addEventListener('dragstart', e => e.preventDefault());
+            
+            // Wheel support
+            testesSwiper.addEventListener('wheel', (e) => {
+                if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) {
+                    e.preventDefault();
+                    currentTranslate += e.deltaX;
+                    
+                    if (currentTranslate < 0) currentTranslate = 0;
+                    if (currentTranslate > maxTranslate) currentTranslate = maxTranslate;
+                    
+                    wrapper.style.transition = 'transform 0.3s ease-out';
+                    setSliderPosition();
+                }
+            }, { passive: false });
+            
+            // Initialize and handle resize
+            calculateDimensions();
+            window.addEventListener('resize', calculateDimensions);
+            
+            // Initial setup
+            testesSwiper.style.cursor = 'grab';
+            wrapper.style.transition = 'transform 0.3s ease-out';
+        }
+    }
     
 });
 
