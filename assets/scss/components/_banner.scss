@@ -5,6 +5,11 @@
     overflow: hidden;
     display: flex;
     align-items: center;
+    padding-top: 5rem;
+
+    @media #{$mq-xl-min} {
+        padding-top: 0;
+    }
     
     // Main overlay on top of everything
     &::after {
@@ -154,6 +159,16 @@
         
         .brand-title {
             margin-bottom: 1.875rem;
+
+            img{
+                width: 100%;
+                max-width: 100%;
+
+                @media #{$mq-sm-min} {
+                    width: auto;
+                    max-width: 100%;
+                }
+            }
             
             h2 {
                 font-size: 4.5rem;
@@ -166,7 +181,11 @@
         }
         
         .description {
-            max-width: 31.25rem;
+            max-width: 100%;
+
+            @media #{$mq-xl-min} {
+                max-width: 31.25rem;
+            }
             
             p {
                 color: $white;
@@ -241,7 +260,7 @@
                 
                 &::after {
                     border-left: 1.125rem solid transparent;
-                    border-bottom: 1.125rem solid transparent;
+                    border-bottom: 1.125rem solid #111;
                 }
                 
                 h1 {
@@ -289,20 +308,20 @@
 @media (max-width: 48rem) {
     .hero-banner {
         height: auto;
-        min-height: 100vh;
+        min-height: auto;
         
-        .banner-content {
+        /*.banner-content {
             padding: 7.5rem 0 3.75rem;
-        }
+        }*/
         
         .content-left {
             .title-section .title-badge {
                 padding: 0.75rem 2rem 0.75rem 0.9375rem;
                 
-                &::after {
+                /*&::after {
                     border-left: 1rem solid transparent;
                     border-bottom: 1rem solid transparent;
-                }
+                }*/
                 
                 h1 {
                     font-size: 1.125rem;
@@ -324,7 +343,7 @@
             .images-stack {
                 .image-item {
                     img {
-                        height: 9.375rem;
+                        height: 12rem;
                     }
                     
                     &.image-1 {

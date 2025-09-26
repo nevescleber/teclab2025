@@ -14,8 +14,8 @@
         align-items: center;
         
         @media (max-width: 768px) {
-            margin: -3rem 1rem 2rem;
-            height: 10rem;
+            height: auto;
+            margin: -9rem 0rem 3rem
         }
     }
     
@@ -42,7 +42,7 @@
         
         @media (max-width: 768px) {
             flex-direction: column;
-            padding: 0 2rem;
+            padding: 2rem 2rem;
             gap: 1rem;
         }
     }
@@ -57,12 +57,13 @@
         }
         
         @media (max-width: 768px) {
-            justify-content: center;
-            text-align: center;
+            justify-content: flex-start;
+            text-align: left;
             
             &:first-child {
                 flex-direction: column;
                 gap: 0.5rem;
+                align-items: flex-start;
             }
         }
     }
@@ -88,6 +89,14 @@
         margin: 0;
         text-shadow: 0.125rem 0.125rem 0.25rem rgba(0, 0, 0, 0.5);
         opacity: 0.8;
+
+        br{
+            display: block;
+
+            @media (max-width: 993px) {
+                display: none;
+            }
+        }
     }
     
     // Área principal do footer
@@ -127,6 +136,7 @@
     &__copyright {
         color: #999;
         font-size: 0.875rem;
+        font-family: $font-body;
         margin: 0;
         
         @media (max-width: 768px) {

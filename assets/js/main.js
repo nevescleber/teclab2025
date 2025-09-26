@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Mobile Menu Toggle
     const mobileToggle = document.querySelector('.mobile-toggle');
     const mobileNav = document.querySelector('.mobile-nav');
+    const mobileClose = document.querySelector('.mobile-close');
     const mainHeader = document.querySelector('.main-header');
     
     if (mobileToggle && mobileNav) {
@@ -11,6 +12,15 @@ document.addEventListener('DOMContentLoaded', function() {
             mobileNav.classList.toggle('active');
             document.body.classList.toggle('menu-open');
         });
+        
+        // Close mobile menu with close button
+        if (mobileClose) {
+            mobileClose.addEventListener('click', function() {
+                mobileToggle.classList.remove('active');
+                mobileNav.classList.remove('active');
+                document.body.classList.remove('menu-open');
+            });
+        }
         
         // Close mobile menu when clicking on menu links
         const mobileMenuLinks = document.querySelectorAll('.mobile-menu a');
@@ -22,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
         
-        // Close mobile menu when clicking outside
+        // Close mobile menu when clicking outside (but not on logo)
         document.addEventListener('click', function(e) {
             if (!mobileNav.contains(e.target) && !mobileToggle.contains(e.target)) {
                 mobileToggle.classList.remove('active');
@@ -207,10 +217,27 @@ document.addEventListener('DOMContentLoaded', function() {
     // Swiper functionality for testes slider
     const testesSwiper = document.querySelector('.testes-swiper');
     if (testesSwiper) {
+        // Função para verificar se está em mobile
+        function isMobile() {
+            return window.innerWidth <= 767;
+        }
+        
+        // Se estiver em mobile, não inicializar o swiper
+        if (isMobile()) {
+            // Aplicar estilos estáticos para mobile
+            const wrapper = testesSwiper.querySelector('.swiper-wrapper');
+            if (wrapper) {
+                wrapper.style.transform = 'none';
+                wrapper.style.transition = 'none';
+            }
+            return; // Sair da função sem inicializar o swiper
+        }
+        
         const wrapper = testesSwiper.querySelector('.swiper-wrapper');
         const slides = testesSwiper.querySelectorAll('.swiper-slide');
         const scrollbar = testesSwiper.querySelector('.swiper-scrollbar');
         const scrollbarDrag = testesSwiper.querySelector('.swiper-scrollbar-drag');
+        
         
         if (slides.length > 0 && wrapper && scrollbar && scrollbarDrag) {
             let currentTranslate = 0;
@@ -393,7 +420,19 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Initialize and handle resize
             calculateDimensions();
-            window.addEventListener('resize', calculateDimensions);
+            window.addEventListener('resize', () => {
+                // Se mudou para mobile, desabilitar swiper
+                if (isMobile()) {
+                    wrapper.style.transform = 'none';
+                    wrapper.style.transition = 'none';
+                    testesSwiper.style.cursor = 'default';
+                    return;
+                }
+                // Se voltou para desktop, reabilitar
+                testesSwiper.style.cursor = 'grab';
+                wrapper.style.transition = 'transform 0.3s ease-out';
+                calculateDimensions();
+            });
             
             // Initial setup
             testesSwiper.style.cursor = 'grab';
@@ -401,20 +440,124 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-});
-
-// Add CSS to prevent body scroll when mobile menu is open
-const menuStyle = document.createElement('style');
-menuStyle.textContent = `
-    body.menu-open {
-        overflow: hidden;
-    }
+    // Selos Mobile Swiper - Função simplificada
+    let swiperInstance = null;
     
-    @media (max-width: 1024px) {
-        body.menu-open {
-            position: fixed;
-            width: 100%;
+    function initSelosSwiper() {
+        const swiper = document.querySelector('.selos-mobile-swiper');
+        if (!swiper) return;
+        
+        const wrapper = swiper.querySelector('.swiper-wrapper');
+        const pagination = swiper.querySelector('.teclab-pagination-bullets.selos-mobile-pagination');
+        
+        if (!wrapper || !pagination) return;
+        
+        // Limpar instância anterior
+        if (swiperInstance && swiperInstance.wrapper) {
+            swiperInstance.wrapper.removeEventListener('touchstart', swiperInstance.handleTouchStart);
+            swiperInstance.wrapper.removeEventListener('touchend', swiperInstance.handleTouchEnd);
+        }
+        
+        // Reset wrapper position
+        wrapper.style.transform = 'translateX(0%)';
+        
+        // Verificar se é mobile
+        if (window.innerWidth <= 992) {
+            let currentSlide = 0;
+            
+            // Forçar estilos da paginação
+            pagination.style.display = 'flex';
+            pagination.style.justifyContent = 'center';
+            pagination.style.marginTop = '2rem';
+            pagination.style.gap = '8px';
+            pagination.style.position = 'relative';
+            pagination.style.zIndex = '10';
+            pagination.style.opacity = '1';
+            
+            // SEMPRE criar bullets
+            pagination.innerHTML = `
+                <div class="teclab-bullet teclab-bullet-active" data-index="0"></div>
+                <div class="teclab-bullet" data-index="1"></div>
+                <div class="teclab-bullet" data-index="2"></div>
+            `;
+            
+            // Função para ir para slide
+            function goToSlide(index) {
+                currentSlide = index;
+                wrapper.style.transform = `translateX(-${index * 33.333}%)`;
+                
+                // Atualizar bullets
+                const bullets = pagination.querySelectorAll('.teclab-bullet');
+                bullets.forEach((bullet, i) => {
+                    bullet.classList.toggle('teclab-bullet-active', i === index);
+                });
+            }
+            
+            // Click nos bullets
+            const bullets = pagination.querySelectorAll('.teclab-bullet');
+            bullets.forEach((bullet, index) => {
+                bullet.addEventListener('click', () => {
+                    goToSlide(index);
+                });
+            });
+            
+            // Touch handlers
+            let startX = 0;
+            
+            function handleTouchStart(e) {
+                startX = e.touches[0].clientX;
+            }
+            
+            function handleTouchEnd(e) {
+                const endX = e.changedTouches[0].clientX;
+                const diff = startX - endX;
+                
+                if (Math.abs(diff) > 50) {
+                    if (diff > 0 && currentSlide < 2) {
+                        goToSlide(currentSlide + 1);
+                    } else if (diff < 0 && currentSlide > 0) {
+                        goToSlide(currentSlide - 1);
+                    }
+                }
+            }
+            
+            // Adicionar event listeners
+            wrapper.addEventListener('touchstart', handleTouchStart);
+            wrapper.addEventListener('touchend', handleTouchEnd);
+            
+            // Salvar instância
+            swiperInstance = {
+                wrapper: wrapper,
+                pagination: pagination,
+                handleTouchStart: handleTouchStart,
+                handleTouchEnd: handleTouchEnd
+            };
+            
+        } else {
+            // Desktop: esconder paginação
+            pagination.style.display = 'none';
+            pagination.innerHTML = '';
         }
     }
-`;
-document.head.appendChild(menuStyle);
+    
+    // Inicialização imediata
+    initSelosSwiper();
+    
+    // Garantir que funcione no DOM ready
+    document.addEventListener('DOMContentLoaded', function() {
+        setTimeout(initSelosSwiper, 100);
+    });
+    
+    // Garantir que funcione no window load
+    window.addEventListener('load', function() {
+        setTimeout(initSelosSwiper, 200);
+    });
+    
+    // Reinicializar no resize
+    let resizeTimeout;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(initSelosSwiper, 250);
+    });
+    
+});

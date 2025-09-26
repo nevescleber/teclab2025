@@ -39,45 +39,92 @@
             </div>
 
             <div class="row selos-boxes">
-                <div class="col-lg-4 col-md-6 mb-4">
+                <div class="col-lg-4 mb-4">
                     <div class="selo-box" data-description="Certificação para produtos de entrada. Não são referência em desempenho, mas cumprem as especificações básicas sem comprometer a experiência e sem enganar o consumidor.">
                         <div class="selo-image-container bg-frame">
                             <img src="<?php echo get_template_directory_uri(); ?>/assets/img/badge-standard.png" alt="Selo Standard" class="selo-image">
                         </div>
                         <div class="selo-content">
-                            <p class="selo-subtitle">TESTADO • APROVADO</p>
-                            <h3 class="selo-title">STANDARD</h3>
+                            <p class="selo-subtitle text-small">TESTADO • APROVADO</p>
+                            <h3 class="selo-title text-medium">STANDARD</h3>
                             <button class="selo-btn">+</button>
                         </div>
                     </div>
                 </div>
                 
-                <div class="col-lg-4 col-md-6 mb-4">
+                <div class="col-lg-4 mb-4">
                     <div class="selo-box" data-description="Para gamers que buscam performance acima da média. Produtos que oferecem excelente relação custo-benefício e desempenho comprovado em jogos e aplicações exigentes.">
                         <div class="selo-image-container bg-frame">
                             <img src="<?php echo get_template_directory_uri(); ?>/assets/img/badge-gamer.png" alt="Selo Gamer" class="selo-image">
                         </div>
                         <div class="selo-content">
-                            <p class="selo-subtitle">TESTADO • APROVADO</p>
-                            <h3 class="selo-title">GAMER</h3>
+                            <p class="selo-subtitle text-small">TESTADO • APROVADO</p>
+                            <h3 class="selo-title text-medium">GAMER</h3>
                             <button class="selo-btn">+</button>
                         </div>
                     </div>
                 </div>
                 
-                <div class="col-lg-4 col-md-6 mb-4">
+                <div class="col-lg-4 mb-4">
                     <div class="selo-box" data-description="O que há de melhor no mercado. Performance excepcional, qualidade premium e tecnologia de ponta. Para quem não aceita menos que a perfeição.">
                         <div class="selo-image-container bg-frame">
                             <img src="<?php echo get_template_directory_uri(); ?>/assets/img/badge-extreme.png" alt="Selo Extreme" class="selo-image">
                         </div>
                         <div class="selo-content">
-                            <p class="selo-subtitle">TESTADO • APROVADO</p>
-                            <h3 class="selo-title">EXTREME</h3>
+                            <p class="selo-subtitle text-small">TESTADO • APROVADO</p>
+                            <h3 class="selo-title text-medium">EXTREME</h3>
                             <button class="selo-btn">+</button>
                         </div>
                     </div>
                 </div>
             </div>
+            
+            <!-- Swiper container - mobile only -->
+            <div class="selos-mobile-swiper" style="display: none;">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="selo-box" data-description="Certificação para produtos de entrada. Não são referência em desempenho, mas cumprem as especificações básicas sem comprometer a experiência e sem enganar o consumidor.">
+                            <div class="selo-image-container bg-frame">
+                                <img src="<?php echo get_template_directory_uri(); ?>/assets/img/badge-standard.png" alt="Selo Standard" class="selo-image">
+                            </div>
+                            <div class="selo-content">
+                                <p class="selo-subtitle text-small">TESTADO • APROVADO</p>
+                                <h3 class="selo-title text-medium">STANDARD</h3>
+                                <button class="selo-btn">+</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="swiper-slide">
+                        <div class="selo-box" data-description="Para gamers que buscam performance acima da média. Produtos que oferecem excelente relação custo-benefício e desempenho comprovado em jogos e aplicações exigentes.">
+                            <div class="selo-image-container bg-frame">
+                                <img src="<?php echo get_template_directory_uri(); ?>/assets/img/badge-gamer.png" alt="Selo Gamer" class="selo-image">
+                            </div>
+                            <div class="selo-content">
+                                <p class="selo-subtitle text-small">TESTADO • APROVADO</p>
+                                <h3 class="selo-title text-medium">GAMER</h3>
+                                <button class="selo-btn">+</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="swiper-slide">
+                        <div class="selo-box" data-description="O que há de melhor no mercado. Performance excepcional, qualidade premium e tecnologia de ponta. Para quem não aceita menos que a perfeição.">
+                            <div class="selo-image-container bg-frame">
+                                <img src="<?php echo get_template_directory_uri(); ?>/assets/img/badge-extreme.png" alt="Selo Extreme" class="selo-image">
+                            </div>
+                            <div class="selo-content">
+                                <p class="selo-subtitle text-small">TESTADO • APROVADO</p>
+                                <h3 class="selo-title text-medium">EXTREME</h3>
+                                <button class="selo-btn">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Navigation bullets for mobile -->
+                <div class="teclab-pagination-bullets selos-mobile-pagination"></div>
+            </div>
+            
         </div>
     </div>
 </section>
@@ -182,10 +229,10 @@
     <div class="container container--big">
         <div class="planos-aprovacao-wrapper">
             <div class="row">
-                <div class="col-md-7 col-left">
+                <div class="col-lg-7 col-left">
                     <img src="<?php echo get_template_directory_uri(); ?>/assets/img/planos-aprovacao-bg.png" alt="Planos de aprovação">
                 </div>
-                <div class="col-md-5 col-right">
+                <div class="col-lg-5 col-right">
                     <div class="planos-aprovacao-content text-white">
                         <h2 class="text-big">PLANOS DE APROVAÇÃO COM RECORRÊNCIA</h2>
                         
@@ -206,11 +253,12 @@
     <div class="container container--big">
         <div class="qual-escolher-wrapper">
             <div class="row">
-                <div class="col-md-6 col-left">
+                <div class="col-lg-6 col-left">
+                    <h2 class="text-big mobile">qual selo escolher?</h2>
                     <img src="<?php echo get_template_directory_uri(); ?>/assets/img/qual-selo-bg.png" alt="Qual escolher">
                 </div>
-                <div class="col-md-6 col-right">
-                    <h2>qual selo escolher?</h2>
+                <div class="col-lg-6 col-right">
+                    <h2 class="text-big desktop">qual selo escolher?</h2>
                     
                     <!-- Accordion -->
                     <div class="selo-accordion">
@@ -314,10 +362,10 @@
     <div class="container container--big">
         <div class="por-que-confiar-wrapper">
             <div class="row">
-                <div class="col-md-6 col-left">
+                <div class="col-lg-6 col-left">
                     <div class="header-content">
                         <div class="header-content-title">
-                            <h2>porque <br> confiar <br> no</h2>
+                            <h2 class="text-big desktop">porque <br> confiar <br> no</h2>
                         </div>
                         <div class="images-stack">
                             <div class="image-item image-1">
@@ -332,6 +380,10 @@
                         </div>
                     </div>
 
+                    <div class="mobile-title">
+                        <h2 class="text-big">porque <br> confiar no</h2>
+                    </div>
+
                     <div class="brand-title">
                         <img src="<?php echo get_template_directory_uri(); ?>/assets/img/logo-banner.png" alt="TecLab">
                     </div>
@@ -342,7 +394,7 @@
                     </p>
                     
                 </div>
-                <div class="col-md-6 col-right">
+                <div class="col-lg-6 col-right">
                     <div class="ideal-para">
                         <div class="ideal-para-tag cut-tag">
                             <span class="text-small">PROTOCOLOS</span>

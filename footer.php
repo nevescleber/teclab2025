@@ -21,7 +21,7 @@
         <div class="footer__main">
             <div class="footer__bottom">
                 <img src="<?php echo get_template_directory_uri(); ?>/assets/img/logo.svg" alt="TecLab Logo" class="footer__logo">
-                <p class="footer__copyright">TecLab © 2025 Todos os direitos reservados.</p>
+                <p class="footer__copyright text-small">TecLab © 2025 Todos os direitos reservados.</p>
             </div>
         </div>
     </div>

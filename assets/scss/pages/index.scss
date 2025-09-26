@@ -17,7 +17,7 @@ body{
         .image{
             width: 100%;
             height: 100%;
-            min-height: 25rem;
+            //min-height: 25rem;
             object-fit: cover;
             position: relative;
             z-index: 1;
@@ -26,9 +26,22 @@ body{
         .col-md-6 {
             &:first-child {
                 img {
-                    width: 100%;
-                    height: auto;
-                    border-radius: 8px;
+                    width: 60%;
+                    margin: 0 auto;
+                    display: block;
+
+                    @media #{$mq-lg-max} {
+                        width: 100%;
+                        height: 17rem;
+                        object-fit: cover;
+                        object-position: top;
+                    }
+
+                    @media #{$mq-md-min} {
+                        width: 100%;
+                        height: auto;
+                        border-radius: 8px;
+                    }
                 }
             }
         }
@@ -190,6 +203,14 @@ body{
     
     .selos-boxes {
         margin-top: 6rem;
+
+        @media (max-width: 992px) {
+            margin-top: 2rem;
+        }
+
+        @media (max-width: 1280px) {
+            margin-top: 4rem;
+        }
     }
     
     .selo-box {
@@ -203,6 +224,10 @@ body{
         transition: all 0.4s ease;
         backdrop-filter: blur(0.625rem);
         height: 25rem;
+
+        @media (max-width: 992px) {
+            margin-bottom: 9rem;
+        }
         
         &:hover {
             transform: translateY(-0.625rem);
@@ -263,18 +288,20 @@ body{
         
         .selo-subtitle {
             font-size: 0.85rem;
-            color: rgba(255, 255, 255, 0.7);
-            margin: 0 0 0.5rem 0;
+            color: #ffffff;
+            margin: 0;
             letter-spacing: 1px;
             text-transform: uppercase;
-            font-weight: 400;
+            font-family: $font-title;
+            font-weight: $thin;
+            opacity: 0.8;
         }
         
         .selo-title {
             font-size: 1.8rem;
-            color: $white;
+            color: #ffffff;
             margin: 0;
-            font-weight: 700;
+            font-weight: $medium;
             letter-spacing: 2px;
             text-transform: uppercase;
             font-family: $font-title;
@@ -286,23 +313,26 @@ body{
             right: 1.5rem;
             width: 2.5rem;
             height: 2.5rem;
-            border: 0.125rem solid rgba(255, 255, 255, 0.3);
-            background: rgba(255, 255, 255, 0.1);
+            //border: 0.125rem solid rgba(255, 255, 255, 0.3);
+            //background: rgba(255, 255, 255, 0.1);
+            background: transparent;
+            border: none;
             color: $white;
-            border-radius: 50%;
-            font-size: 1.5rem;
+            opacity: 0.6;
+            //border-radius: 50%;
+            font-size: 2.2rem;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
             transition: all 0.3s ease;
-            backdrop-filter: blur(0.625rem);
+            //backdrop-filter: blur(0.625rem);
             
-            &:hover {
+            /*&:hover {
                 background: rgba(255, 255, 255, 0.2);
                 border-color: rgba(255, 255, 255, 0.5);
                 transform: scale(1.1);
-            }
+            }*/
         }
         
         // Description area that appears from bottom
@@ -311,15 +341,15 @@ body{
             bottom: 0;
             left: 0;
             right: 0;
-            background: rgba(0, 0, 0, 0.95);
+            background: rgba(255, 255, 255, 0.03);
             color: $white;
             padding: 1.5rem;
             text-align: center;
             opacity: 0;
             visibility: hidden;
             transition: all 0.4s ease;
-            border-radius: 0 0 1.25rem 1.25rem;
-            backdrop-filter: blur(1.25rem);
+            //border-radius: 0 0 1.25rem 1.25rem;
+            //backdrop-filter: blur(1.25rem);
             z-index: 10;
             transform: translateY(100%);
             
@@ -343,6 +373,7 @@ body{
             
             .selo-content {
                 height: 5rem;
+                border-radius: 0;
                 
                 .selo-subtitle {
                     font-size: 0.75rem;
@@ -361,6 +392,11 @@ body{
                 display: flex;
                 align-items: center;
                 justify-content: center;
+            }
+
+            .selo-btn{
+                display: none;
+                transition: all 0.4s ease;
             }
         }
     }
@@ -394,6 +430,95 @@ body{
         }
     }
     
+    // Mobile swiper - hidden on desktop
+    .selos-mobile-swiper {
+        display: none;
+        
+        @media (max-width: 992px) {
+            display: block;
+            width: 100%;
+            margin-top: 2rem; // Espaço normal
+            padding: 3rem 0 0 0; // Padding top para badge sobrepor
+            position: relative;
+            overflow: hidden; // Esconder overflow do swiper
+            
+            .swiper-wrapper {
+                display: flex;
+                width: 300%; // 3 slides
+                transition: transform 0.3s ease;
+            }
+            
+            .swiper-slide {
+                width: 33.333%; // 1/3 para cada slide
+                flex-shrink: 0;
+                display: flex;
+                justify-content: center;
+                padding: 0 1rem;
+                box-sizing: border-box;
+                
+                .selo-box {
+                    width: 100%;
+                    max-width: 300px;
+                    position: relative;
+                    
+                    .selo-image-container {
+                        position: relative;
+                        z-index: 5;
+                    }
+                    
+                    .selo-image {
+                        position: absolute; // Posição absoluta para sobrepor
+                        top: -3rem; // Sobrepor para cima
+                        left: 50%;
+                        transform: translateX(-50%); // Centralizar horizontalmente
+                        z-index: 10; // Ficar por cima de tudo
+                        width: 12rem; // Tamanho maior
+                        height: auto;
+                    }
+                }
+            }
+            
+            // Forçar bullets a aparecer SEMPRE
+            .swiper-pagination {
+                display: flex !important;
+                justify-content: center !important;
+                gap: 8px !important;
+                margin-top: 2rem !important;
+                opacity: 1 !important;
+                visibility: visible !important;
+                position: static !important;
+                z-index: 999 !important;
+                height: auto !important;
+                width: auto !important;
+                
+                span {
+                    width: 12px !important;
+                    height: 12px !important;
+                    border-radius: 2px !important;
+                    background: rgba(255, 255, 255, 0.5) !important;
+                    cursor: pointer !important;
+                    transition: all 0.3s ease !important;
+                    opacity: 1 !important;
+                    display: block !important;
+                    visibility: visible !important;
+                    margin: 0 4px !important;
+                    
+                    &.swiper-pagination-bullet-active {
+                        background: white !important;
+                        transform: scale(1.2) !important;
+                    }
+                }
+            }
+        }
+    }
+    
+    // Hide original boxes on mobile
+    .selos-boxes {
+        @media (max-width: 992px) {
+            display: block;
+        }
+    }
+
     @media (max-width: 48rem) {
         padding: 2rem 0;
         
@@ -441,6 +566,86 @@ body{
                 }
             }
         }
+        
+        // Apply same styles to mobile swiper
+        .selos-mobile-swiper {
+            .selo-box {
+                height: 21.875rem;
+                margin-bottom: 2rem;
+                
+                .selo-image-container {
+                    height: 13.75rem;
+                }
+                
+                .selo-image {
+                    width: 12rem; // Maior para sobrepor melhor
+                    transform: translateY(-3.5rem); // Mais negativo para sobrepor
+                }
+                
+                .selo-content {
+                    height: 5rem;
+                }
+                
+                .selo-title {
+                    font-size: 1.5rem;
+                }
+                
+                &.show-description {
+                    .selo-image-container {
+                        height: 8rem;
+                    }
+                    
+                    .selo-image {
+                        transform: translateY(-1.5rem);
+                        width: 7rem;
+                    }
+                    
+                    .selo-content {
+                        height: 4rem;
+                    }
+                    
+                    .selo-description {
+                        height: 9.875rem;
+                        
+                        p {
+                            font-size: 0.9rem;
+                        }
+                    }
+                }
+            }
+            
+            // Estilo da navegação mobile
+            .teclab-pagination-bullets {
+                display: flex !important;
+                justify-content: center !important;
+                margin-top: 2rem !important;
+                gap: 8px !important;
+                position: relative !important;
+                z-index: 10 !important;
+                opacity: 1 !important;
+                
+                .teclab-bullet {
+                    width: 12px !important;
+                    height: 12px !important;
+                    background: rgba(255, 255, 255, 0.5) !important;
+                    border-radius: 2px !important; // Quadrado
+                    cursor: pointer !important;
+                    opacity: 1 !important;
+                    margin: 0 !important;
+                    transition: all 0.3s ease !important;
+                    display: block !important;
+                    
+                    &.teclab-bullet-active {
+                        background: white !important;
+                        transform: scale(1.2) !important;
+                    }
+                    
+                    &:hover {
+                        background: rgba(255, 255, 255, 0.8) !important;
+                    }
+                }
+            }
+        }
     }
 }
 
@@ -448,6 +653,10 @@ body{
     background-color: #1e1e1e;
     padding: 4rem 0;
     overflow: hidden;
+    background-image: url('../../assets/img/fire02.png');
+    background-size: auto;
+    background-position: calc(100% - 10rem) center;
+    background-repeat: no-repeat;
 
     .como-funcionam-wrapper {
         .section-header {
@@ -486,9 +695,42 @@ body{
             overflow: visible;
             padding-bottom: 4rem;
 
+            // Desabilitar funcionalidade swiper em mobile
+            @media #{$mq-md-max} {
+                overflow: visible;
+                
+                // Desabilitar swiper behavior em mobile
+                &.swiper-container {
+                    overflow: visible;
+                    
+                    // Remover eventos de touch/mouse
+                    pointer-events: none;
+                    max-width: 92%;
+                    margin: 0 auto;
+                    padding-left: .675rem;
+                    
+                    // Permitir interação apenas nos cards
+                    .swiper-slide {
+                        pointer-events: auto;
+                    }
+                    
+                    // Desabilitar transformações
+                    .swiper-wrapper {
+                        transform: none !important;
+                        transition: none !important;
+                    }
+                }
+            }
+
             .swiper-wrapper {
                 display: flex;
                 transition-timing-function: ease-in-out;
+
+                // Layout vertical em mobile
+                @media #{$mq-md-max} {
+                    flex-direction: column;
+                    align-items: stretch;
+                }
             }
 
             .swiper-slide {
@@ -498,6 +740,17 @@ body{
 
                 &:last-child {
                     margin-right: 0;
+                }
+
+                // Layout vertical em mobile
+                @media #{$mq-md-max} {
+                    width: 100%;
+                    margin-right: 0;
+                    margin-bottom: 1.5rem;
+
+                    &:last-child {
+                        margin-bottom: 0;
+                    }
                 }
 
                 .teste-card {
@@ -510,12 +763,20 @@ body{
                     align-items: flex-start;
                     gap: 2rem;
                     transition: all 0.3s ease;
-                    border: 0.125rem solid rgba(255, 255, 255, 0.8);
+                    border: 0.125rem solid rgba(255, 255, 255, 0.2);
 
                     &:hover {
                         transform: translateY(-0.25rem);
                         border-color: rgba(255, 255, 255, 1);
                         box-shadow: 0 0.5rem 2rem rgba(255, 255, 255, 0.1);
+                    }
+
+                    // Adaptações para mobile
+                    @media #{$mq-md-max} {
+                        width: 100% !important;
+                        height: auto !important;
+                        padding: 1.5rem;
+                        gap: 1.5rem;
                     }
 
                     .teste-number {
@@ -528,10 +789,22 @@ body{
                         justify-content: center;
                         flex-shrink: 0;
 
+                        // Adaptações para mobile
+                        @media #{$mq-md-max} {
+                            width: 4rem;
+                            height: 4rem;
+                            border-radius: 0.5rem;
+                        }
+
                         span {
                             color: #ffffff;
                             font-size: 2rem;
                             font-weight: 700;
+
+                            // Adaptações para mobile
+                            @media #{$mq-md-max} {
+                                font-size: 1.5rem;
+                            }
                         }
                     }
 
@@ -541,16 +814,27 @@ body{
                         flex-direction: column;
                         justify-content: flex-start;
                         height: 6.875rem;
+
+                        // Adaptações para mobile
+                        @media #{$mq-md-max} {
+                            height: auto;
+                        }
                         
                         .teste-title {
                             color: $white;
-                            font-size: 1.5rem;
-                            font-weight: 700;
+                            font-weight: $regular;
                             margin-bottom: 1rem;
                             text-transform: uppercase;
                             letter-spacing: 0.05em;
-                            opacity: 0.8;
+                            //opacity: 0.8;
                             margin: 0;
+                            font-family: $font-title;
+
+                            // Adaptações para mobile
+                            @media #{$mq-md-max} {
+                                font-size: 1.1rem;
+                                margin-bottom: 0.75rem;
+                            }
                         }
 
                         .teste-description {
@@ -558,6 +842,11 @@ body{
                             font-size: 1rem;
                             line-height: 1.6;
                             margin: 0;
+
+                            // Adaptações para mobile
+                            @media #{$mq-md-max} {
+                                font-size: 0.9rem;
+                            }
                         }
                     }
                 }
@@ -567,6 +856,11 @@ body{
                 margin-top: 2rem;
                 display: flex;
                 justify-content: center;
+
+                // Esconder navegação em mobile
+                @media #{$mq-md-max} {
+                    display: none;
+                }
 
                 .swiper-scrollbar {
                     width: 44.25rem;
@@ -616,6 +910,12 @@ body{
                         padding: 1.75rem;
                         gap: 1.75rem;
 
+                        // Garantir largura total em mobile
+                        @media #{$mq-md-max} {
+                            width: 100% !important;
+                            height: 10rem !important;
+                        }
+
                         .teste-number {
                             width: 6rem;
                             height: 6rem;
@@ -657,8 +957,8 @@ body{
                 margin-bottom: 2rem;
 
                 .section-title {
-                    font-size: 2rem;
                     padding: 0.875rem 2rem 0.875rem 1.25rem;
+                    width: 100%;
                     
                     &::after {
                         border-left: 1rem solid transparent;
@@ -668,14 +968,26 @@ body{
             }
 
             .testes-swiper {
+                padding-bottom: 0rem;
+                
                 .swiper-slide {
-                    margin-right: 1rem;
+                    width: 100%;
+                    margin-right: 0;
+                    margin-bottom: 1.5rem;
+                    box-sizing: border-box;
+
+                    &:last-child {
+                        margin-bottom: 0;
+                    }
 
                     .teste-card {
-                        width: 28rem;
-                        height: 9.5rem;
+                        width: calc(100% + 1.35rem);
+                        height: auto;
                         padding: 1.5rem;
                         gap: 1.5rem;
+                        box-sizing: border-box;
+                        margin-left: -0.675rem;
+                        margin-right: -0.675rem;
 
                         .teste-number {
                             width: 5.5rem;
@@ -811,19 +1123,50 @@ body{
     .qual-escolher-wrapper{
         .col-left{
             img{
-                width: 100%;
+                width: 60%;
+                margin: 0 auto;
+                display: block;
+                margin-bottom: 2rem;
+
+                @media #{$mq-lg-max} {
+                    width: 100%;
+                    height: 17rem;
+                    object-fit: cover;
+                    object-position: top;
+                }
+
+                @media #{$mq-lg-min} {
+                    width: 100%;
+                }
+            }
+
+            h2.mobile {
+                font-family: $font-title;
+                font-weight: $thin;
+                text-transform: uppercase;
+                margin-bottom: 2rem;
+                color: $white;
+                display: block;
+
+                @media #{$mq-lg-min} {
+                    display: none;
+                }
             }
         }
 
         .col-right{
             color: white;
             
-            h2 {
+            h2.desktop {
                 font-family: $font-title;
                 font-weight: $thin;
                 text-transform: uppercase;
                 margin-bottom: 2rem;
-                font-size: 2.5rem;
+                display: none;
+
+                @media #{$mq-lg-min} {
+                    display: block;
+                }
             }
             
             // Accordion Styles
@@ -983,7 +1326,7 @@ body{
     background-color: #0f0f0f;
     padding: 4rem 0;
     color: white;
-    padding-bottom: 0;
+    padding-bottom: 4rem;
 
     .por-que-confiar-wrapper{
         padding-bottom: 4rem;
@@ -997,21 +1340,37 @@ body{
             background-size: contain;
             background-repeat: no-repeat;
             background-position: top;
-            padding: 3rem 2rem;
+            //padding: 3rem 2rem;
             position: relative;
 
             p{
                 opacity: 0.8;
+
+                br{
+                    display: none;
+
+                    @media #{$mq-xl-min} {
+                        display: none;
+                    }
+
+                    @media #{$mq-2xl-min} {
+                        display: block;
+                    }
+                }
             }
             
             // Container principal - título e badges lado a lado
             .header-content {
-                display: flex;
+                display: block;
                 //align-items: center;
                 align-items: baseline;
                 justify-content: space-between;
                 margin-bottom: 3rem;
                 gap: 2rem;
+
+                @media #{$mq-xl-min} {
+                    display: flex;
+                }
 
                 .header-content-title{
                     h2 {
@@ -1024,13 +1383,20 @@ body{
                         letter-spacing: 0.05em;
                         flex: 0 0 auto;
                         white-space: nowrap;
+                        display: none;
+
+                        &.desktop{
+                            @media #{$mq-2xl-min} {
+                                display: block;
+                            }
+                        }
                     }
                 }
                 
                 .images-stack {
                     position: relative;
                     flex: 1;
-                    height: 12rem;
+                    height: 8rem;
                     
                     .image-item {
                         position: absolute;
@@ -1042,9 +1408,13 @@ body{
                         }
                         
                         img {
-                            width: 180px;
+                            width: 150px;
                             height: auto;
                             filter: drop-shadow(0 0.5rem 1rem rgba(0, 0, 0, 0.3));
+
+                            @media #{$mq-md-min} {
+                                width: 180px;
+                            }
                         }
                         
                         // Posicionamento sobreposto - igual ao banner
@@ -1062,9 +1432,41 @@ body{
                         
                         &.image-3 {
                             top: 2rem;
-                            right: -1rem;
+                            right: 0;
                             z-index: 1;
+
+                            @media #{$mq-md-min} {
+                                right: -1rem;
+                            }
                         }
+                    }
+                }
+            }
+
+            .mobile-title{
+                h2 {
+                    font-family: $font-title;
+                    font-weight: $thin;
+                    text-transform: uppercase;
+                    margin: 0;
+                    line-height: 1.2;
+                    letter-spacing: 0.05em;
+                    flex: 0 0 auto;
+                    white-space: nowrap;
+                    margin-top: 5rem;
+                    margin-bottom: 1rem;
+
+                    @media #{$mq-lg-min} {
+                        margin-top: 12rem;
+                    }
+                    
+                    @media #{$mq-xl-min} {
+                        display: block;
+                        margin-top: 12rem;
+                    }
+                    
+                    @media #{$mq-2xl-min} {
+                        display: none;
                     }
                 }
             }
@@ -1074,9 +1476,17 @@ body{
                 justify-content: left;
                 
                 img {
-                    width: auto;
+                    width: 350px;
                     height: auto;
                     filter: brightness(1.1) drop-shadow(0 0.5rem 1rem rgba(0, 0, 0, 0.4));
+
+                    @media #{$mq-lg-min} {
+                        width: 100%;
+                    }
+
+                    @media #{$mq-2xl-min} {
+                        width: auto;
+                    }
                 }
             }
         }
@@ -1145,76 +1555,6 @@ body{
                         padding: 1rem 0;
                     }
                 }
-            }
-        }
-    }
-    
-    // Responsividade
-    @media (max-width: 768px) {
-        padding: 2rem 0;
-        
-        .por-que-confiar-wrapper {
-            .row {
-                min-height: auto;
-            }
-            
-            .col-left {
-                padding: 2rem 1rem;
-                margin-bottom: 2rem;
-                
-                .header-content {
-                    flex-direction: column;
-                    align-items: center;
-                    gap: 1.5rem;
-                    margin-bottom: 2rem;
-                    
-                    h2 {
-                        font-size: 2rem;
-                        text-align: center;
-                        white-space: normal;
-                    }
-                    
-                    .images-stack {
-                        height: 8rem;
-                        
-                        .image-item {
-                            img {
-                                width: 120px;
-                            }
-                            
-                            // Posicionamento mobile - mais centralizado
-                            &.image-1 {
-                                top: 0;
-                                right: 4rem;
-                                z-index: 3;
-                            }
-                            
-                            &.image-2 {
-                                top: 0.5rem;
-                                right: 2rem;
-                                z-index: 2;
-                            }
-                            
-                            &.image-3 {
-                                top: 1rem;
-                                right: 0;
-                                z-index: 1;
-                            }
-                        }
-                    }
-                }
-                
-                .brand-title {
-                    img {
-                        width: 10rem;
-                    }
-                }
-            }
-            
-            .col-right {
-                
-                
-                
             }
         }
     }
